@@ -1,0 +1,131 @@
+﻿@using Ehome_BackEnd.Models
+
+@{
+    ViewData["Title"] = "Items";
+}
+@model Order
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Ad Soyad</th>
+                <th scope="col">Sifariş Vaxtı</th>
+                <th scope="col">Status</th>
+                <th scope="col">Sifariş Statusu</th>
+                <th scope="col">Çatdırılma Statusu</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>@Model.Name @Model.Surname</td>
+                <td>@Model.CreatedAt</td>
+                <td>@Model.Status</td>
+                @if (Model.Status == Ehome_BackEnd.Enums.OrderStatus.Gözləmədə)
+                {
+                    <td>
+                        <button type="submit" class="btn btn-outline-success reject-btn" style="pointer-events:none">Anbarda</button>
+                    </td>
+                    <td><a class="btn btn-success" asp-action="Accept" asp-controller="order" asp-route-id="@Model.Id">Qəbul</a></td>
+                    <td><a class="btn btn-danger" asp-action="reject" asp-controller="order" asp-route-id="@Model.Id">İmtina</a></td>
+
+                }
+                @if (Model.Status == Ehome_BackEnd.Enums.OrderStatus.İmtina)
+                {
+                    <td>
+                        <button type="submit" class="btn btn-outline-success reject-btn" style="pointer-events:none">Anbarda</button>
+                    </td>
+                    <td><a class="btn btn-warning" asp-action="Waiting" asp-controller="order" asp-route-id="@Model.Id">Gözləmədə</a></td>
+                    <td><a class="btn btn-success" asp-action="Accept" asp-controller="order" asp-route-id="@Model.Id">Qəbul</a></td>
+
+                }
+                @if (Model.Status == Ehome_BackEnd.Enums.OrderStatus.Qəbul)
+                {
+                    if (Model.DeliveryStatus == Ehome_BackEnd.Enums.OrderDeliveryStatus.Anbarda)
+                    {
+                        <td>
+                            <button type="submit" class="btn btn-outline-success reject-btn" style="pointer-events:none">Anbarda</button>
+                        </td>
+                        <td><a class="btn btn-warning" asp-action="Curier" asp-controller="order" asp-route-id="@Model.Id">Kuryerde</a></td>
+                        <td><a class="btn btn-success" asp-action="finish" asp-controller="order" asp-route-id="@Model.Id">Çatdırıldı</a></td>
+                    }
+                    if (Model.DeliveryStatus == Ehome_BackEnd.Enums.OrderDeliveryStatus.Kuryerde)
+                    {
+                        <td>
+                            <button type="submit" class="btn btn-outline-success reject-btn" style="pointer-events:none">Kuryerde</button>
+                        </td>
+                        <td><a class="btn btn-success" asp-action="finish" asp-controller="order" asp-route-id="@Model.Id">Çatdırıldı</a></td>
+                    }
+                    if (Model.DeliveryStatus == Ehome_BackEnd.Enums.OrderDeliveryStatus.Catdirildi)
+                    {
+                        <td>
+                            <button type="submit" class="btn btn-outline-success reject-btn" style="pointer-events:none">Çatdırıldı</button>
+                        </td>
+                    }
+                }
+
+            </tr>
+
+        </tbody>
+    </table>
+    <style>
+        .collapsed:hover {
+            text-decoration: none !important
+        }
+    </style>
+    <div class="accordion md-accordion" id="accordionEx1" role="tablist" aria-multiselectable="true">
+
+        <!-- Accordion card -->
+        <div class="card">
+
+            <!-- Card header -->
+            <div class="card-header" role="tab" id="heading-@Model.Id">
+                <a style="text-decoration:none !important" class="collapsed" data-toggle="collapse" data-parent="#accordionEx1" href="#collapse-@Model.Id"
+                   aria-expanded="false" aria-controls="collapseTwo1">
+                    @if (Model.Status == Ehome_BackEnd.Enums.OrderStatus.Gözləmədə)
+                    {
+                  @*  <h5 style="color:darkgoldenrod" class="mb-0">
+                        @Model.CreatedAt.ToString("dd.MM.yyyy HH:mm") <i class="fas fa-angle-down rotate-icon"></i>
+                    </h5>*@
+                    }
+                    @if (Model.Status== Ehome_BackEnd.Enums.OrderStatus.Qəbul)
+                    {
+                <h5 style="color:green" class="mb-0">
+                    @Model.CreatedAt.ToString("dd.MM.yyyy HH:mm") <i class="fas fa-angle-down rotate-icon"></i>
+                </h5>
+                    }
+                    @if (Model.Status == Ehome_BackEnd.Enums.OrderStatus.İmtina)
+                    {
+                <h5 style="color:red" class="mb-0">
+                    @Model.CreatedAt.ToString("dd.MM.yyyy HH:mm") <i class="fas fa-angle-down rotate-icon"></i>
+                </h5>
+                    }
+
+                </a>
+            </div>
+
+            <!-- Card body -->
+            <div id="collapse-@Model.Id" class="collapse" role="tabpanel" aria-labelledby="heading-@Model.Id"
+                 data-parent="#accordionEx1">
+                <div class="card-body">
+                    @foreach (var item in Model.OrderItems)
+                    {
+
+                        decimal total = (item.SalePrice - (item.SalePrice * item.DiscountPercent) / 100) * item.Count;
+
+                        <p><img style="width:150px" src="~/assets/IMG/furnitures/@item.Futniture.FurnitureImages.FirstOrDefault(x=>x.IsMain==true)?.Image" /> <strong>Məhsulun Adı:</strong>@item.ProdName <strong>Cəmi:</strong> @total.ToString("#.##") <strong>Sayı:</strong> @item.Count <strong>Status:</strong>@Model.Status @if (Model.Status == Ehome_BackEnd.Enums.OrderStatus.Gözləmədə) {<a class="btn btn-danger" asp-action="OrderItemDelete" asp-route-id="@Model.Id" asp-route-id2="@item.Id">Sil</a> } </p>
+                    }
+                </div>
+            </div>
+
+        </div>
+        <!-- Accordion card -->
+
+
+    </div>
+
+</div>
+    <!--Accordion wrapper-->
+   

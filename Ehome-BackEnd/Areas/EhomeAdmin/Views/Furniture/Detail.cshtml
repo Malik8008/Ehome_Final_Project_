@@ -1,0 +1,74 @@
+﻿@using Ehome_BackEnd.Models
+@model Futniture
+
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<div class="p-2">
+    <div>
+        <h4>
+            Id
+        </h4>
+        <p>
+            @Model.Id
+        </p>
+    </div>
+    <div>
+        <h4>
+            Name
+        </h4>
+        <p>
+            @Model.Name
+        </p>
+    </div>
+    <div>
+        <h4>
+            SalePrice
+        </h4>
+        <p>
+            @Model.SalePrice
+        </p>
+    </div>
+    <div>
+        <h4>
+            CostPrice
+        </h4>
+        <p>
+            @Model.CostPrice
+        </p>
+    </div>
+     <div>
+        <h4>
+            Discount
+        </h4>
+        <p>
+            @Model.Discount
+        </p>
+    </div>
+     <div>
+        <h4>
+            MainImage
+        </h4>
+        <div class="mt-3">
+            <p>
+                <img style="width: 180px; height:110px" src="~/assets/IMG/furnitures/@Model.FurnitureImages.FirstOrDefault(p=>p.IsMain == true).Image">
+            </p>
+        </div>
+    </div>
+     <div>
+        <h4>
+            AnotherImages
+        </h4>
+        <p>
+            <div class="d-flex">
+            @foreach (var item in Model.FurnitureImages.Where(a=>a.IsMain==false))
+           {
+                   <img style="width: 180px; height:110px" src="~/assets/IMG/furnitures/@item.Image">
+           }
+           </div>
+        </p>
+    </div>
+</div>
+
+

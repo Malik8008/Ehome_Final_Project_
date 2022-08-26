@@ -1,0 +1,30 @@
+﻿@using Ehome_BackEnd.Models
+@model Slider
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="ms-3">
+    <div>
+        <h4>
+            Id
+        </h4>
+        <p>
+            @Model.Id
+        </p>
+    </div>
+    <div>
+        <h4>
+            Slider Image
+        </h4>
+        <p>
+            <img style="width: 400px; height:140px" src="~/assets/IMG/slider-image/@Model.Image"/>
+        </p>
+    </div>
+</div>
+
+<form method="post" class="mt-4 ms-3">
+    <button type="submit" class="btn btn-danger">Delete</button>
+</form>
+

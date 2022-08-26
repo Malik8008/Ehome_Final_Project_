@@ -1,0 +1,98 @@
+﻿@using Ehome_BackEnd.Models
+@using X.PagedList
+@using X.PagedList.Mvc.Core
+@model IPagedList<Futniture>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="table-responsive pt-3">
+     <a asp-controller="furniture" asp-action="create" style="color:white;font-size:20px" class="mb-3 btn btn-success">Create futniture object</a>
+
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Image
+                </th>
+                <th>
+                    Price
+                </th>
+                <th>
+                    Count
+                </th>
+                 <th>
+                    Settings
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var futniture in Model)
+            {
+                <tr>
+                    <td>
+                        <div style="margin-top:28px">
+                            @futniture.Name
+                        </div>
+                    </td>
+                    <td>
+                        <img style="width: 150px; height:95px" src="~/assets/IMG/furnitures/@futniture.FurnitureImages.FirstOrDefault(x=>x.IsMain==true)?.Image">
+                    </td>
+                    <td>
+                        <div style="margin-top:28px">
+                            @futniture.SalePrice
+                        </div>
+                    </td>
+                    <td>
+                        <div style="margin-top:28px">
+                            @futniture.Count
+                        </div>
+                    </td>
+                    <td>
+                        <div class="d-flex mt-4">
+                            <div class="detail">
+                                <a asp-controller="furniture" asp-action="Detail" asp-route-id="@futniture.Id" class="btn btn-primary"><i class="fa-solid fa-circle-info"></i></a>
+                            </div>
+                            <div class="edit">
+                                <a asp-controller="furniture" asp-action="edit" asp-route-id="@futniture.Id" class="btn btn-warning"><i class="fa-solid fa-pen-to-square" style="color:white;"></i>
+                                </a>
+                            </div>
+                            <div class="delete">
+                                <a asp-controller="furniture" asp-action="delete" asp-route-id="@futniture.Id" class="btn btn-danger"> <i class="fa-solid fa-trash"></i></a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div class="d-flex justify-content-center">
+    @Html.PagedListPager((IPagedList)Model,page=>Url.Action("Index",new {page}),new X.PagedList.Web.Common.PagedListRenderOptionsBase
+    {
+    LiElementClasses=new[] {"page-item"},
+    PageClasses = new[] {"page-link"}
+    })
+</div>
+<style>
+    .page-item {
+        margin-left: 8px;
+        color: green;
+    }
+
+    .page-link {
+        color: #49bd68;
+        font-size: 20px;
+        border-radius: 50px;
+    }
+
+        .page-link:hover {
+            background-color: #49bd68;
+            color: white;
+        }
+</style>
+

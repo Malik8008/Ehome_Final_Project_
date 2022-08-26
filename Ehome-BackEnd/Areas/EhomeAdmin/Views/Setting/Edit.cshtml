@@ -1,0 +1,23 @@
+﻿@using Ehome_BackEnd.Models
+@model Setting
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<form method="post" enctype="multipart/form-data" class="mt-5">
+    <div>
+        <label>Key</label>
+        <input asp-for="Key" class="form-control" /><br />
+        <span class="text-danger" asp-validation-for="Key"></span>
+    </div>
+    <div>
+        <label>Photo</label>
+        <input asp-for="Photo" accept="image/*" class="form-control" /><br />
+        <span class="text-danger" asp-validation-for="Photo"></span>
+    </div>
+        <div>
+            <button class="btn btn-dark" type="submit">Edit</button>
+        </div>
+</form>
+

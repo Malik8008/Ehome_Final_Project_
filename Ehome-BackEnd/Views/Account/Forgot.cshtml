@@ -1,0 +1,30 @@
+﻿@using Ehome_BackEnd.ViewModels.AccountVM
+
+@{
+    ViewData["Title"] = "Forgot";
+}
+@model ForgotVM
+
+<<main>
+    <div id="forgot">
+        <div class="container">
+            <div class="row">
+                <div class="forgotmain">
+                    <div class="head mt-3">
+                        <h4>Xoş Gəldiniz</h4>
+                    </div>
+                    <form method="post">
+                        <div class="fotgotinput">
+                            <input asp-for="Email" style="width: 450px;" type="email" class="form-control" placeholder="Email ünvanınızı daxil edin" aria-label="Email ünvanınızı daxil edin" aria-describedby="basic-addon1">
+                            <span asp-validation-for="Email"></span>
+                        </div>
+                        <div class="daxil mt-2">
+                            <button type="submit"><a>Göndər</a></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+

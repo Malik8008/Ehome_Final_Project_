@@ -1,0 +1,274 @@
+#detail .head {
+  width: 100%;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  text-align: center;
+}
+#detail .head p {
+  color: #40484e;
+  font-size: 24px;
+  font-weight: 500;
+}
+#detail button {
+  border: none;
+}
+#detail a {
+  text-decoration: none;
+}
+#detail .col-lg-9 {
+  padding-bottom: 20px;
+}
+#detail .col-lg-9 .product-image .col-lg-2 {
+  overflow-y: scroll;
+}
+#detail .col-lg-9 .product-image .col-lg-2 ul {
+  border: 1px solid #40484e;
+}
+#detail .col-lg-9 .product-image .col-lg-2 ul li {
+  padding: 3px;
+}
+#detail .col-lg-9 .product-image .col-lg-2 ul li a {
+  text-decoration: none;
+}
+#detail .col-lg-9 .product-image .col-lg-2 ul li a img {
+  opacity: 0.6;
+  padding: 2px;
+  border: 1px solid #40484e;
+}
+#detail .col-lg-9 .product-image .col-lg-2 ul li a img:hover {
+  opacity: 1;
+}
+#detail .col-lg-9 .product-image .col-lg-2 ul li a .active {
+  opacity: 1 !important;
+}
+#detail .col-lg-9 .product-image .product-image-main .detailcarousel .item {
+  position: relative;
+}
+#detail .col-lg-9 .product-image .product-image-main .detailcarousel .item .product-image-icon {
+  position: absolute;
+  right: 6px;
+  top: 8px;
+  width: 35px;
+  height: 35px;
+  border-radius: 50px;
+  background-color: #49bd68;
+}
+#detail .col-lg-9 .product-image .product-image-main .detailcarousel .item .product-image-icon a {
+  text-decoration: none;
+}
+#detail .col-lg-9 .product-image .product-image-main .detailcarousel .item .product-image-icon a i {
+  font-size: 20px;
+  margin-top: 7px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+}
+#detail .col-lg-9 .product-image .product-image-main .detailcarousel .item .product-image-icon:hover {
+  background-color: white;
+}
+#detail .col-lg-9 .product-image .product-image-main .detailcarousel .item .product-image-icon:hover a i {
+  color: #49bd68;
+}
+#detail .col-lg-9 .product-service {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.75);
+}
+#detail .col-lg-9 .product-service ul li {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+#detail .col-lg-9 .product-service ul li i {
+  font-size: 25px;
+  color: rgba(113, 118, 123, 0.8196078431);
+}
+#detail .col-lg-9 .product-service ul li p {
+  font-size: 15px;
+  color: rgba(113, 118, 123, 0.8196078431);
+}
+#detail .col-lg-9 .product-questions {
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+#detail .col-lg-9 .product-questions .accordion-item {
+  border: none;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+}
+#detail .col-lg-9 .product-form .product-input input {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+#detail .col-lg-9 .product-form .product-post .product-social .facebook {
+  padding-top: 3px;
+  border-radius: 6px;
+  width: 100px;
+  background-color: #1877f2;
+}
+#detail .col-lg-9 .product-form .product-post .product-social .facebook a {
+  margin-left: 8px;
+}
+#detail .col-lg-9 .product-form .product-post .product-social .facebook a i {
+  color: white;
+}
+#detail .col-lg-9 .product-form .product-post .product-social .facebook a span {
+  color: white;
+}
+#detail .col-lg-9 .product-form .product-post .product-social .tweet {
+  padding-top: 3px;
+  border-radius: 6px;
+  width: 100px;
+  background-color: #1b95e0;
+}
+#detail .col-lg-9 .product-form .product-post .product-social .tweet a {
+  margin-left: 18px;
+}
+#detail .col-lg-9 .product-form .product-post .product-social .tweet a i {
+  color: white;
+}
+#detail .col-lg-9 .product-form .product-post .product-social .tweet a span {
+  color: white;
+}
+#detail .col-lg-9 .product-form .product-post .product-social .share {
+  padding-top: 3px;
+  border-radius: 6px;
+  width: 100px;
+  background-color: #e75a3a;
+}
+#detail .col-lg-9 .product-form .product-post .product-social .share a {
+  margin-left: 18px;
+}
+#detail .col-lg-9 .product-form .product-post .product-social .share a i {
+  color: white;
+}
+#detail .col-lg-9 .product-form .product-post .product-social .share a span {
+  color: white;
+}
+#detail .col-lg-9 .product-form .product-post .product-social .post-button {
+  width: 130px;
+}
+#detail .col-lg-9 .product-form .product-post .product-social .post-button button {
+  border-radius: 6px;
+  background-color: #49bd68;
+  border: 1px solid rgba(128, 128, 128, 0.4);
+}
+#detail .col-lg-9 .product-form .product-post .product-social .post-button button a {
+  letter-spacing: 5px;
+  color: white;
+  font-size: 20px;
+}
+#detail .col-lg-3 .col3right {
+  padding: 20px;
+  box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.75);
+}
+#detail .col-lg-3 .col3right .credit {
+  text-align: center;
+}
+#detail .col-lg-3 .col3right .credit p {
+  font-size: 15px;
+  font-weight: 400;
+}
+#detail .col-lg-3 .col3right .credit p span {
+  font-weight: 500;
+}
+#detail .col-lg-3 .col3right .cash .cashname p {
+  font-size: 15px;
+  font-weight: 400;
+}
+#detail .col-lg-3 .col3right .cash .cashpercent {
+  font-weight: 500;
+  width: 40px;
+  height: 25px;
+  background-color: #49bd68;
+  color: white;
+  text-align: center;
+  border-radius: 6px;
+}
+#detail .col-lg-3 .col3right .cash .cashmoney span {
+  color: red;
+  font-weight: 500;
+}
+#detail .col-lg-3 .col3right .qenaet .qenaetpercent p {
+  text-align: center;
+  background-color: #49bd68;
+  color: white;
+  width: 40px;
+}
+#detail .col-lg-3 .col3right .qenaet .qenaetmain {
+  padding-left: 5px;
+  padding-right: 5px;
+  border: 1px solid #49bd68;
+  height: 24px;
+}
+#detail .col-lg-3 .col3right .qenaet .qenaetmain p {
+  font-weight: 500;
+}
+#detail .col-lg-3 .col3right .col3manat {
+  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#detail .col-lg-3 .col3right .col3manat p {
+  border-radius: 5px;
+  padding: 2px;
+  background-color: #49bd68;
+  font-size: 15px;
+  font-weight: 500;
+  color: white;
+}
+#detail .col-lg-3 .col3right .month p {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+}
+#detail .col-lg-3 .col3right .birkart .birkartinfo p {
+  font-size: 18px;
+  font-weight: 500;
+}
+#detail .col-lg-3 .col3right .bottominfo p:first-child {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-align: center;
+  font-weight: 500;
+  color: #49bd68;
+  border-bottom: 1px solid #49bd68;
+  margin-bottom: 0.1rem;
+  border-bottom-width: 1px;
+}
+#detail .col-lg-3 .col3right .bottominfo p:last-child {
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-align: center;
+  font-weight: 400;
+}
+#detail .col-lg-3 .col3right .col3buy {
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+#detail .col-lg-3 .col3right .col3buy button {
+  width: 80%;
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px;
+  border: 1px solid #40484e;
+}
+#detail .col-lg-3 .col3right .col3buy button a {
+  color: #49bd68;
+  font-weight: 500;
+  letter-spacing: 2px;
+  font-size: 20px;
+}/*# sourceMappingURL=detail.css.map */

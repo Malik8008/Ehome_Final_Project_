@@ -1,0 +1,24 @@
+﻿@using Ehome_BackEnd.Models
+@model Setting
+@{
+    ViewData["Title"] = "Delete";
+}
+<div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+<form method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <div class="form-group">
+            <label for="name">Key</label>
+            <input asp-for="Key" class="form-control" id="name">
+            <span class="text-danger" asp-validation-for="Key"></span>
+        </div>
+        <div class="form-group">
+            <label for="name">Value</label>
+            <input asp-for="Value" class="form-control" id="name">
+            <span class="text-danger" asp-validation-for="Value"></span>
+        </div>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-warning mt-3">Delete</button>
+    </div>
+</form>
+

@@ -1,0 +1,250 @@
+﻿@using Ehome_BackEnd.Models
+@using Ehome_BackEnd.ViewModels.HomeVM
+
+@model HomeVM
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@foreach (Futniture item in Model.Futnitures)
+{
+    <section id="bestlove">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-4 col-sm-6">
+        <div class="cards">
+            <div class="bestloves mt-3">
+            
+                    <div class="col-lg-12">
+                    <div class="image">
+                        <a asp-controller="detail" asp-action="index" asp-route-id="@item.Id"><img style="width: 100%; height:220px;" src="./assets/IMG/furnitures/@item.FurnitureImages.FirstOrDefault(x=>x.IsMain==true).Image" alt=""></a>
+                        <div class="manat">
+                            <p>0₼ 0% 12 ay</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="icon">
+                        <ul class="d-flex">
+                            <li><i class="fa-solid fa-star"></i></li>
+                            <li><i class="fa-solid fa-star"></i></li>
+                            <li><i class="fa-solid fa-star"></i></li>
+                            <li><i class="fa-solid fa-star"></i></li>
+                            <li><i class="fa-solid fa-star"></i></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="info">
+                        <div class="mean ms-4">
+                            <p>@item.Name</p>
+                        </div>
+                        <div class="price ms-4 mt-4">
+                            <p>Kreditle: <span>@item.SalePrice.ToString("#.##") ₼</span></p>
+                        </div>
+                        <div class="negd d-flex ms-4">
+                            <div class="name">
+                                <p>Nağd:</p>
+                            </div>
+                            <div class="discount ms-1">
+                                <span>-@item.Discount%</span>
+                            </div>
+                            <div class="maney ms-2">
+                                <p>@((item.SalePrice-(item.SalePrice*item.Discount/100)).ToString("#.##"))0 ₼</p>
+                            </div>
+                        </div>
+                        <div class="buy">
+                            <a class="add-basket" data-id="@item.Id"><i class="fa-solid fa-cart-shopping"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+            </div>
+        </div>
+    </section>
+}
+
+<style>
+    #bestlove {
+  padding-top: 10px;
+}
+#bestlove .row .col-sm-6 {
+  padding: 0;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+#bestlove .row .head {
+  width: 100%;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  text-align: center;
+}
+#bestlove .row .head p {
+  color: #40484e;
+  font-size: 24px;
+  font-weight: 500;
+}
+#bestlove .row .cards {
+  border: 1px solid rgba(128, 128, 128, 0.2);
+  height: 410px;
+  width: 100%;
+  padding: 0 15px 0 15px;
+}
+#bestlove .row .cards:hover {
+  box-shadow: 0px 0px 7px -1px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0px 0px 7px -1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 7px -1px rgba(0, 0, 0, 0.75);
+}
+#bestlove .row .cards:hover .bestloves .image .righticon {
+  display: block;
+}
+#bestlove .row .cards .bestloves {
+  align-content: center;
+}
+#bestlove .row .cards .bestloves .image {
+  position: relative;
+  display: flex;
+
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+#bestlove .row .cards .bestloves .image a {
+  width: 100%;
+  height: 100%;
+}
+#bestlove .row .cards .bestloves .image a img {
+  width: 100%;
+  height: 200px;
+  background-position:center;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+#bestlove .row .cards .bestloves .image .righticon {
+  position: absolute;
+  top: 0;
+  right: -12px;
+  display: none;
+}
+#bestlove .row .cards .bestloves .image .righticon ul li {
+  width: 28px;
+  height: 28px;
+  background-color: #49bd68;
+  list-style: none;
+}
+#bestlove .row .cards .bestloves .image .righticon ul li a {
+  text-decoration: none;
+  font-size: 16px;
+  color: white;
+}
+#bestlove .row .cards .bestloves .image .righticon ul li:hover {
+  background-color: white;
+}
+#bestlove .row .cards .bestloves .image .righticon ul li:hover a {
+  color: #49bd68;
+}
+#bestlove .row .cards .bestloves .image .righticon ul li:first-child {
+  border-radius: 5px 5px 0 0;
+}
+#bestlove .row .cards .bestloves .image .righticon ul li:last-child {
+  border-radius: 0 0 5px 5px;
+}
+#bestlove .row .cards .bestloves .image .manat {
+  width: 100px;
+  height: 25px;
+  border-radius: 5px;
+  background-color: #49bd68;
+  color: white;
+  top: 0px;
+  left: 19px;
+  position: absolute;
+}
+#bestlove .row .cards .bestloves .icon {
+  margin-left: 20px;
+}
+#bestlove .row .cards .bestloves .icon ul {
+  padding-left: 0;
+}
+#bestlove .row .cards .bestloves .icon ul li {
+  list-style: none;
+  text-decoration: none;
+  color: orange;
+}
+#bestlove .row .cards .bestloves .info {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  text-align: start;
+  align-items: flex-start;
+}
+#bestlove .row .cards .bestloves .info .buy {
+  width: 45px;
+  height: 45px;
+  border: 1px solid rgba(128, 128, 128, 0.2);
+  border-radius: 4px;
+  position: absolute;
+  right: 0;
+  bottom: 12%;
+}
+#bestlove .row .cards .bestloves .info .buy a {
+  text-decoration: none;
+}
+#bestlove .row .cards .bestloves .info .buy a i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  font-size: 22px;
+  font-weight: 900;
+  margin-top: 10px;
+  color: rgba(128, 128, 128, 0.8);
+}
+#bestlove .row .cards .bestloves .info .buy:hover {
+  border: 1px solid #49bd68;
+}
+#bestlove .row .cards .bestloves .info .buy:hover a i {
+  color: #49bd68;
+}
+#bestlove .row .cards .bestloves .info .price p {
+  font-size: 14px;
+}
+#bestlove .row .cards .bestloves .info .price p span {
+  font-size: 16px;
+  font-weight: bold;
+  color: #49bd68;
+}
+#bestlove .row .cards .bestloves .info .mean {
+  margin-top: 0px;
+}
+#bestlove .row .cards .bestloves .info .mean p {
+  font-size: 14px;
+}
+#bestlove .row .cards .bestloves .info .negd .name p {
+  font-size: 14px;
+}
+#bestlove .row .cards .bestloves .info .negd .discount {
+  width: 45px;
+  height: 25px;
+  background-color: #49bd68;
+  border-radius: 5px;
+}
+#bestlove .row .cards .bestloves .info .negd .discount span {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  color: white;
+}
+#bestlove .row .cards .bestloves .info .negd .maney p {
+  color: red;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+</style>
+

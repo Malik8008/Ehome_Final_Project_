@@ -1,0 +1,39 @@
+﻿@using Ehome_BackEnd.ViewModels.AccountVM
+@model LoginVM
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<main>
+        <div id="login">
+            <div class="container">
+                <div class="row">
+                    <div class="alert alert-danger" asp-validation-summary="ModelOnly"></div>
+                    <form method="post">
+                        <div class="loginmain">
+                        <div class="head mt-3">
+                            <h4>Xoş Gəldiniz</h4>
+                            <p>Istifadəçi adi və şifrə ilə daxil olun</p>
+                        </div>
+                        <div class="loginput">
+                            <input style="width: 300px;" type="text" asp-for="Username" class="form-control" placeholder="Istifadəçi adi" aria-label="Istifadəçi adi" aria-describedby="basic-addon1">
+                            <span asp-validation-for="Username"></span>
+                            <input style="width: 300px;" asp-for="Password" type="password" class="form-control mt-1" placeholder="Şifrə" aria-label="Şifrə" aria-describedby="basic-addon1">
+                            <span asp-validation-for="Password"></span>
+                        </div>
+                        <div class="daxil mt-2">
+                            
+                            <button type="submit">Daxil oL</button>
+                            <p>Hesabınız yoxdur? <a asp-controller="account" asp-action="register">Hesabınız yoxdur?</a></p>
+                        </div>
+                        <div class="confirm">
+                            <p>Şifrəni unudubsunuz? <a asp-controller="account" asp-action="forgot">Yenilə</a></p>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+

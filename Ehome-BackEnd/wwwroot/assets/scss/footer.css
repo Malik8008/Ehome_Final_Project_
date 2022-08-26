@@ -1,0 +1,131 @@
+* {
+  box-sizing: border-box;
+}
+
+footer {
+  padding-top: 40px;
+  padding-bottom: 30px;
+  background-color: #666c71;
+}
+footer .row .foot .active {
+  opacity: 1;
+}
+footer .row .foot h6 {
+  opacity: 0.5;
+  font-size: 25px;
+  color: white;
+}
+footer .row .foot ul {
+  padding-left: 18px;
+}
+footer .row .foot ul li {
+  color: white;
+}
+footer .row .foot ul li a {
+  font-size: 16px;
+  text-decoration: none;
+  color: white;
+}
+footer .row .foot ul li a:hover {
+  border-bottom: 1px solid white;
+}
+footer .row .foot .elaqe ul {
+  padding-left: 0px;
+}
+footer .row .foot .elaqe ul li {
+  list-style: none;
+  color: white;
+}
+footer .row .foot .elaqe ul li a {
+  font-size: 16px;
+  text-decoration: none;
+  color: white;
+}
+footer .row .foot .elaqe ul li a:hover {
+  border-bottom: 1px solid white;
+}
+footer .row .foot .inputs input {
+  height: 40px;
+  border-radius: 10px 0 0 10px;
+  border: none;
+}
+footer .row .foot .inputs button {
+  border-radius: 0 10px 10px 0;
+  border: none;
+  padding: 4px;
+  background-color: #49bd68;
+  color: white;
+  border-right: 3px solid white;
+}
+footer .row .footerend a {
+  text-decoration: none;
+}
+footer .row .footerend .col-lg-6 h6 {
+  opacity: 0.5;
+  font-size: 25px;
+  color: white;
+}
+footer .row .foottop {
+  display: none !important;
+}
+footer .row .bankcard {
+  display: none !important;
+}
+
+@media only screen and (max-width: 992px) {
+  footer .container .row .footerend {
+    display: none !important;
+  }
+  footer .container .row .foottop {
+    display: block !important;
+  }
+  footer .container .row .foottop h6 {
+    opacity: 0.5;
+    font-size: 25px;
+    color: white;
+    text-align: center;
+  }
+  footer .container .row .foottop ul {
+    display: flex;
+    justify-content: space-around;
+    justify-content: center;
+    align-items: center;
+  }
+  footer .container .row .foottop ul li a img {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+  footer .container .row .bankcard {
+    display: block !important;
+  }
+  footer .container .row .bankcard ul {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+  }
+  footer .container .row .bankcard ul li {
+    list-style: none;
+  }
+  footer .container .row .bankcard ul li a img {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+@media only screen and (max-width: 768px) {
+  footer .container .row .foot h6 {
+    text-align: center;
+  }
+  footer .container .row .inputs input {
+    width: 100%;
+  }
+  footer .container .row .inputs button {
+    width: 95px;
+    padding: 0px;
+  }
+}/*# sourceMappingURL=footer.css.map */

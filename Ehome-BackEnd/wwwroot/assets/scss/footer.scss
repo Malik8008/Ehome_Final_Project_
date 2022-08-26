@@ -1,0 +1,168 @@
+*{
+    box-sizing: border-box;
+}
+
+footer{
+    padding-top: 40px;
+    padding-bottom: 30px;
+    background-color: #666c71;
+    .row{
+        .foot{
+            .active{
+                opacity: 1;
+            }
+            h6{
+                opacity: 0.5;
+                font-size: 25px;
+                color: white;
+            }
+            ul{
+                padding-left: 18px;
+                li{
+                    color: white;
+                    a{
+                        font-size: 16px;
+                        text-decoration: none;
+                        color: white;
+                        &:hover{
+                            border-bottom: 1px solid white;
+                        }
+                    }     
+                }
+            }
+            .elaqe{
+                ul{
+                    padding-left: 0px;
+                    li{
+                        list-style: none;
+                        color: white;
+                        a{
+                            font-size: 16px;
+                            text-decoration: none;
+                            color: white;
+                            &:hover{
+                                border-bottom: 1px solid white;
+                            }
+                        }     
+                    }
+                }
+            }
+            .inputs{
+                input{
+                    height: 40px;
+                    border-radius: 10px 0 0 10px;
+                    border: none;
+                }
+                button{
+                    border-radius: 0 10px 10px 0;
+                    border: none;
+                    padding: 4px;
+                    background-color: #49bd68;
+                    color: white;
+                    border-right: 3px solid white;
+                }
+            }
+        }
+        .footerend{
+            a{
+                text-decoration: none;
+            }
+            .col-lg-6{
+                h6{
+                    opacity: 0.5;
+                    font-size: 25px;
+                    color: white;
+                }
+            }
+
+        }
+        .foottop{
+            display: none !important;
+        }
+        .bankcard{
+            display: none !important;
+        }
+    } 
+}
+
+@media only screen and(max-width:992px){
+    footer{
+        .container{
+            .row{
+                .footerend{
+                    display: none !important;
+                }
+                .foottop{
+                    display: block !important;
+                    h6{
+                        opacity: 0.5;
+                    font-size: 25px;
+                    color: white;
+                        text-align: center;
+                    }
+                    ul{
+                        display: flex;
+                        justify-content: space-around;
+                        justify-content: center;
+                        align-items: center;
+                        li{
+                            a{
+                                img{
+                                    display: flex;
+                                    justify-content: center;
+                                    flex-direction: column;
+                                    align-items: center;
+                                }
+                            }
+                        }
+                    }
+                }
+                .bankcard{
+                    display: block !important;
+                    ul{
+                        width: 100%;
+                        display: flex;
+                        justify-content: space-between;
+                        justify-content: center;
+                        align-items: center;
+                        li{
+                            list-style: none;
+                            a{
+                                img{
+                                    display: flex;
+                                    justify-content: center;
+                                    flex-direction: column;
+                                    align-items: center;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            
+        }    
+    }
+}
+
+@media only screen and(max-width:768px){
+    footer{
+        .container{
+            .row{
+                .foot{
+                    h6{
+                        text-align: center;
+                    }
+                }
+                .inputs{
+                    input{
+                        width: 100%;
+                    }
+                    button{
+                        width: 95px;
+                        padding: 0px;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,31 @@
+.breadcrumb li {
+  font-size: 13px;
+}
+.breadcrumb li a {
+  text-decoration: none;
+  color: #40484e;
+  font-size: 12px;
+}
+.breadcrumb .active {
+  color: black !important;
+  opacity: 1;
+  font-weight: bold;
+}
+
+#credit {
+  padding-bottom: 30px;
+}
+#credit .head {
+  width: 100%;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  text-align: center;
+}
+#credit .head p {
+  color: #40484e;
+  font-size: 24px;
+  font-weight: 500;
+}
+#credit .main ul {
+  padding-left: 0;
+}/*# sourceMappingURL=kredit.css.map */

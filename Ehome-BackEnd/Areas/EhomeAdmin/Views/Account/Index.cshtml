@@ -1,0 +1,30 @@
+﻿@using Ehome_BackEnd.Models
+@model List<AppUser>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="table-responsive">
+    <table class="table table-light">
+  <thead>
+    <tr>
+      <th scope="col">Username <i style="font-size:14px" class="fa-solid fa-arrow-down"></i></th>
+      <th scope="col">Surname <i style="font-size:14px" class="fa-solid fa-arrow-down"></i></th>
+      <th scope="col">Email <i style="font-size:14px" class="fa-solid fa-arrow-down"></i></th>
+      <th scope="col">Phone <i style="font-size:14px" class="fa-solid fa-arrow-down"></i></th>
+    </tr>
+  </thead>
+  <tbody>
+   @foreach (AppUser user in Model.Where(m=>m.IsAdmin==false))
+  {
+      <tr>
+          <td>@user.UserName</td>
+          <td>@user.Surname</td>
+          <td>@user.Email</td>
+          <td>@user.PhoneNumber</td>
+      </tr>
+  }
+  </tbody>
+</table>
+</div>
+

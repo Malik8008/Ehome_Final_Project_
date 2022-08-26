@@ -1,0 +1,71 @@
+﻿@using Ehome_BackEnd.Models
+
+@model List<Campaing>
+@{
+    ViewData["Title"] = "Kampaniya";
+}
+
+<main>
+        <div class="container">
+            <div class="row mt-3">
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Əsas səhifə</a></li>
+                        <li class="breadcrumb-item active">Kampaniyalar</li>  
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <section id="companie">
+            <div class="container">
+                <div class="row">
+                    <div class="head">
+                        <p>KAMPANİYALAR</p>
+                    </div>
+                    @foreach (Campaing campaing in Model)
+                   {
+                       <div class="col-lg-6">
+                        <div class="card">
+                            <img style="width: 100%;" src="~/assets/IMG/kampaniya-image/@campaing.Image" alt="">
+                            <div class="image-info ms-3">
+                                <h4>@campaing.Title</h4>
+                                <p>Bitmə Tarixi - @campaing.EndTime</p>
+                                <h8>@campaing.Subtitle</h8>
+                            </div>
+                            <div class="bottom d-flex justify-content-between ms-3 mt-4">
+                                <div class="time">
+                                    <ul class="d-flex list-unstyled">
+                                        <li>
+                                            <strong>00</strong>
+                                            <span>Gün</span>
+                                            <span class="point">:</span>   
+                                        </li>
+                                        <li>
+                                            <strong>00</strong>
+                                            <span class="point">:</span>
+                                            <span>Saat</span>
+                                        </li>
+                                        <li>
+                                            <strong>00</strong>
+                                            <span class="point">:</span>
+                                            <span>Dəqiqə</span>
+                                        </li>
+                                        <li>
+                                            <strong>00</strong>
+                                            <span>Saniyə</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="all mt-3 mx-3">
+                                    <a href="">Ətraflı <i class="fa-solid fa-caret-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   }
+                    
+                </div>
+            </div>
+        </section>
+    </main>
+

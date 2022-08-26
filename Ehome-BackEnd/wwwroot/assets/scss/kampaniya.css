@@ -1,0 +1,59 @@
+#companie {
+  padding-bottom: 40px;
+}
+#companie .head {
+  width: 100%;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  text-align: center;
+}
+#companie .head p {
+  color: #40484e;
+  font-size: 24px;
+  font-weight: 500;
+}
+#companie .card {
+  box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.5);
+  padding-bottom: 10px;
+  border-radius: 20px;
+}
+#companie .card img {
+  border-radius: 20px 20px 0 0;
+}
+#companie .card .bottom .time {
+  border: 1px solid black;
+  border-radius: 5px;
+  height: 60px;
+}
+#companie .card .bottom .time ul {
+  margin-left: 5px;
+  margin-top: 5px;
+}
+#companie .card .bottom .time ul li {
+  font-size: 20px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-right: 10px;
+}
+#companie .card .bottom .time ul li .point {
+  position: absolute;
+  bottom: 16px;
+  right: -7.5px;
+  font-size: 20px;
+  font-weight: bold;
+}
+#companie .card .bottom .time ul li strong {
+  font-weight: 600;
+}
+#companie .card .bottom .time span {
+  font-weight: 500;
+  font-size: 10px;
+}
+#companie .card .bottom .all a {
+  text-decoration: none;
+  color: black;
+}/*# sourceMappingURL=kampaniya.css.map */

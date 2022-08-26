@@ -1,0 +1,32 @@
+#questions {
+  padding-bottom: 30px;
+}
+#questions .head {
+  width: 100%;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  text-align: center;
+}
+#questions .head p {
+  color: #40484e;
+  font-size: 24px;
+  font-weight: 500;
+}
+#questions .question .accordion-item {
+  border: none;
+}
+#questions .question .accordion-button:focus {
+  background-color: white;
+  background-color: #49bd68;
+  border: none;
+}
+#questions .question .accordion-button {
+  background-color: white;
+  border: none;
+}
+#questions .question .accordion-button h5 {
+  color: black;
+}
+#questions .question .accordion-body ul {
+  padding-left: 0px;
+}/*# sourceMappingURL=questions.css.map */

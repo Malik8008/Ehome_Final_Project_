@@ -1,0 +1,38 @@
+﻿@using Ehome_BackEnd.Models
+@model Comment
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="ms-3">
+    <div>
+        <h4>
+            Id
+        </h4>
+        <p>
+            @Model.Id
+        </p>
+    </div>
+    <div>
+        <h4>
+            Name
+        </h4>
+        <p>
+            @Model.Name
+        </p>
+    </div>
+    <div>
+        <h4>
+            Comment
+        </h4>
+        <p>
+            @Model.Rey
+        </p>
+    </div>
+
+</div>
+
+<form method="post" class="mt-4 ms-3">
+    <button type="submit" class="btn btn-danger">Delete</button>
+</form>

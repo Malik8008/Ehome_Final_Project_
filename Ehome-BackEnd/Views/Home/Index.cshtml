@@ -1,0 +1,468 @@
+﻿
+
+@using Ehome_BackEnd.Models
+@using Ehome_BackEnd.ViewModels
+@using Ehome_BackEnd.ViewModels.HomeVM
+@model HomeVM
+
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<main>
+        <section id="service">
+            <div class="container">
+                <div class="row">
+                        <div class="services d-flex justify-content-between justify-content-center mt-3">
+                                @foreach (Service service in Model.Services)
+                               {
+                                  <div class="col-lg-3 d-flex">
+                                    <i class="@service.Icon"></i>
+                                    <p>@service.Subtitle</p>
+                                </div>
+                               }
+                            </ul>
+                        </div>
+                </div>
+            </div>
+        </section>
+        <section id="popcat">
+            <div class="container">
+                <div class="row">
+                    <div class="head mt-3">
+                        <p>POPULYAR KATEQORİYALAR</p>
+                    </div>
+                    @foreach (Futniture item in Model.Futnitures.Where(m=>m.IsPopular==true).OrderByDescending(s=>s.Id).Take(4))
+                   {
+                       <div class="col-lg-3">
+                        <div class="popcategory d-flex justify-content-between">
+                            <div class="info mt-3 ms-2">
+                                <h6>@item.Name</h6>
+                                <p><span>@item.SalePrice.ToString("#") AZN</span> 'dən başlayan qiymətlər</p>
+                            </div>
+                            <div class="image">
+                                <a asp-controller="detail" asp-action="index" asp-route-id="@item.Id">
+                                    <img style="width: 100%;" src="~/assets/IMG/furnitures/@item.FurnitureImages.FirstOrDefault(m=>m.IsMain==true)?.Image" alt="">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                   }
+                    
+                </div>
+            </div>
+        </section>
+        <section id="bestsel">
+            <div class="container">
+                <div class="row">
+                    <div class="head mt-3">
+                        <p>ƏN ÇOX SATILANLAR</p>
+                    </div>
+                    @foreach (Futniture furniture in Model.Futnitures.Where(m=>m.IsBestSell==true).Take(4))
+                   {
+                       <div class="col-lg-3">
+                        <div class="cards">
+                            <div class="bestsellers mt-3">
+                                <div class="col-lg-12">
+                                    <div class="image">
+                                        <a asp-controller="detail" asp-action="index" asp-route-id="@furniture.Id" ><img style="width: 87%;" src="~/assets/IMG/furnitures/@furniture.FurnitureImages.FirstOrDefault(s=>s.IsMain==true)?.Image" alt=""></a>
+                                        <div class="manat">
+                                            <p>0₼ 0% 12 ay</p>
+                                        </div>
+                                        <div class="righticon">
+                                            <ul>
+                                                <li><a asp-controller="basket" asp-action="WishlistAdd" asp-route-id="@furniture.Id"><i class="fa-solid fa-heart"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="icon">
+                                        <ul class="d-flex">
+                                            <li><i class="fa-solid fa-star"></i></li>
+                                            <li><i class="fa-solid fa-star"></i></li>
+                                            <li><i class="fa-solid fa-star"></i></li>
+                                            <li><i class="fa-solid fa-star"></i></li>
+                                            <li><i class="fa-solid fa-star"></i></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="info">                    
+                                        <div class="mean ms-4">
+                                            <p>@furniture.Name</p>
+                                        </div>
+                                        <div class="price ms-4 mt-4">
+                                            <p>Kreditle: <span>@furniture.SalePrice.ToString("#.##") ₼</span></p>
+                                        </div>
+                                        <div class="negd d-flex ms-4">
+                                            <div class="name">
+                                                <p>Nağd:</p>
+                                            </div>
+                                            <div class="discount ms-1">
+                                                <span>-@furniture.Discount%</span>
+                                            </div>
+                                            <div class="maney ms-2">
+                                                <p>@((furniture.SalePrice-(furniture.SalePrice*furniture.Discount/100)).ToString("#")) ₼</p>
+                                            </div>
+                                        </div>
+                                        <div class="buy">
+                                            <a  class="add-basket" data-id="@furniture.Id"  ><i class="fa-solid fa-cart-shopping"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   }
+                </div>
+            </div>
+        </section>
+        <section id="another">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <a href=""><img style="width: 100%;" src="~/assets/IMG/other-images/MebelBanner_hzTz2FZ.png" alt=""></a>
+                    </div>
+                    <div class="col-lg-6">
+                        <a href=""><img style="width: 100%;" src="~/assets/IMG/other-images/MebelBanneronline.png" alt=""></a>
+                    </div> 
+                </div>
+            </div>
+        </section>
+        <section id="bestlove">
+            <div class="container">
+                <div class="row">
+                    <div class="head mt-3">
+                        <p>ƏN ÇOX BƏYƏNİLƏNLƏR</p>
+                        <hr>
+                        <p>1000 AZN QƏDƏR KÜNC DİVAN MODELLƏRİ</p>
+                    </div>
+                    @foreach (Futniture like in @Model.Futnitures.Where(m=>m.IsBestLike==true).Take(4))
+                   {
+                       <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="cards">
+                            <div class="bestloves mt-3">
+                                <div class="col-lg-12">
+                                    <div class="image">
+                                        <a asp-controller="detail" asp-action="index" asp-route-id="@like.Id"><img style="width: 87%;" src="~/assets/IMG/furnitures/@like.FurnitureImages.FirstOrDefault(m=>m.IsMain==true).Image" alt=""></a>
+                                        <div class="manat">
+                                            <p>0₼ 0% 12 ay</p>
+                                        </div>
+                                        <div class="righticon">
+                                            <ul>
+                                                <li><a asp-controller="basket" asp-action="WishlistAdd" asp-route-id="@like.Id"><i class="fa-solid fa-heart"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="icon">
+                                        <ul class="d-flex">
+                                            <li><i class="fa-solid fa-star"></i></li>
+                                            <li><i class="fa-solid fa-star"></i></li>
+                                            <li><i class="fa-solid fa-star"></i></li>
+                                            <li><i class="fa-solid fa-star"></i></li>
+                                            <li><i class="fa-solid fa-star"></i></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="info">     
+                                        <div class="mean ms-4">
+                                            <p>@like.Name</p>
+                                        </div>
+                                        <div class="price ms-4 mt-4">
+                                            <p>Kreditle: <span>@like.SalePrice.ToString("#.##") ₼</span></p>
+                                        </div>
+                                        <div class="negd d-flex ms-4">
+                                            <div class="name">
+                                                <p>Nağd:</p>
+                                            </div>
+                                            <div class="discount ms-1">
+                                                <span>-@like.Discount%</span>
+                                            </div>
+                                            <div class="maney ms-2">
+                                                <p>@((like.SalePrice-(like.SalePrice*like.Discount/100)).ToString("#")) ₼</p>
+                                            </div>
+                                        </div>
+                                        <div class="buy">
+                                            <a class="add-basket" data-id="@like.Id"><i class="fa-solid fa-cart-shopping"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                   } 
+                </div>
+            </div>
+        </section>
+        <section id="bestsale">
+            <div class="container">
+                <div class="row">
+                    <div class="head mt-3">
+                        <p>ENDİRİMDƏ OLANLAR</p>
+                    </div>
+                    @foreach (Futniture sale in Model.Futnitures.Where(m=>m.IsSale==true).Take(4))
+                   {
+                       <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="cards">
+                            <div class="bestsales mt-3">
+                                <div class="col-lg-12">
+                                    <div class="image">
+                                        <a asp-controller="detail" asp-action="index" asp-route-id="@sale.Id"><img style="width: 87%;" src="~/assets/IMG/furnitures/@sale.FurnitureImages.FirstOrDefault(m=>m.IsMain==true).Image" alt=""></a>
+                                        <div class="manat">
+                                            <p>0₼ 0% 12 ay</p>
+                                        </div>
+                                        <div class="righticon">
+                                            <ul>
+                                                <li><a asp-controller="basket" asp-action="WishlistAdd" asp-route-id="@sale.Id"><i class="fa-solid fa-heart"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="icon">
+                                        <ul class="d-flex">
+                                            <li><i class="fa-solid fa-star"></i></li>
+                                            <li><i class="fa-solid fa-star"></i></li>
+                                            <li><i class="fa-solid fa-star"></i></li>
+                                            <li><i class="fa-solid fa-star"></i></li>
+                                            <li><i class="fa-solid fa-star"></i></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="info">
+                                    
+                                        <div class="mean ms-4">
+                                            <p>@sale.Name</p>
+                                        </div>
+                                        <div class="price ms-4 mt-4">
+                                            <p>Kreditle: <span>@sale.SalePrice.ToString("#.##") ₼</span></p>
+                                        </div>
+                                        <div class="negd d-flex ms-4">
+                                            <div class="name">
+                                                <p>Nağd:</p>
+                                            </div>
+                                            <div class="discount ms-1">
+                                                <span>-@sale.Discount%</span>
+                                            </div>
+                                            <div class="maney ms-2">
+                                                <p>@((sale.SalePrice-(sale.SalePrice*sale.Discount/100)).ToString("#")) ₼</p>
+                                            </div>
+                                        </div>
+                                        <div class="buy">
+                                            <a class="add-basket" data-id="@sale.Id"><i class="fa-solid fa-cart-shopping"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   }  
+                </div>
+            </div>
+        </section>
+        <section id="newmark"> 
+            <div class="container">
+                <div class="row">
+                    <div class="head mt-3">
+                        <p>YENI MƏHSULLAR</p>
+                    </div>
+                    <div class="col-lg-6">
+                        <a href=""><img style="width: 100%; height: 200px;" src="~/assets/IMG/kampaniya-image/kampaniya_jpg.jpg"
+                                alt=""></a>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="inputs">
+                            <div class="info">
+                                <h3>Kampaniyalardan və aksiyalardan xəbərdar ol</h3>
+                            </div>
+                            <div class="input d-flex">
+                                <input type="email" placeholder="E-poçt daxil edin">
+                                <button type="button">Göndər</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="blogs">
+            <div class="container">
+                <div class="row">
+                    <div class="head mt-3">
+                        <p>BLOG VƏ XƏBƏRLƏR</p>
+                    </div>
+                    <div class="blogcarusel owl-carousel owl-theme">
+                        <div class="card">
+                            <div class="item">
+                                <img style="width: 100%; height:100%;" src="~/assets/IMG/blog-image/1-ehome.az.jpg" alt="">
+                            </div>
+                            <div class="info">
+                                <h5>İnternet vasitəsilə alış-verişin üstün və mənfi cəhətləri</h5>
+                                <p>İndi mebel, dekorasiya və hər hansı bir ev əşyaları almaq üçün mağazaya getmək lazım deyil.
+                                    Vaxtınıza qənaət edib onlayn mağazada alış-veriş edə bilərsiniz.
+                                    Onlayn alış-verişin üstünlükləri
+                                    Vaxta qənaət. Mağazaya getmək, növbədə durmaq və böyük bir hipermarketlərdə gəzmək lazım deyil,
+                                    bir neç…
+                                </p>
+                                <a asp-controller="about" asp-action="blog">Davamını oxu</a>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="item">
+                                <img style="width: 100%; height:100%;" src="~/assets/IMG/blog-image/1_Masa-stol-oturacaq-stul-qonaq-stolu-metbex-masasi-3-Ehome.az.jpg" alt="">
+                            </div>
+                            <div class="info">
+                                <h5>Həyatınızda baş verən anlar üçün masa</h5>
+                                <p>Masa – evdə olan əsas mebellərdən biridir. Onsuz qida qəbulunu , yemək hazırlanmasını, iş
+                                    görməyi, stolüstü oyunları, bayram günlərində və ya ailənizlə birgə adi günlərdə
+                                    yığıncaqları keçirməyə təsəvvür etmək olmur.
+                                    Otağın mebellərlə yerləşdirilməsi üçün bir və ya iki çox funksional model yetər…
+                                </p>
+                                <a asp-controller="about" asp-action="blog">Davamını oxu</a>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="item">
+                                <img style="width: 100%; height:100%;" src="~/assets/IMG/blog-image/1-ehome.az.jpg" alt="">
+                            </div>
+                            <div class="info">
+                                <h5>İnternet vasitəsilə alış-verişin üstün və mənfi cəhətləri</h5>
+                                <p>İndi mebel, dekorasiya və hər hansı bir ev əşyaları almaq üçün mağazaya getmək lazım deyil.
+                                    Vaxtınıza qənaət edib onlayn mağazada alış-veriş edə bilərsiniz.
+                                    Onlayn alış-verişin üstünlükləri
+                                    Vaxta qənaət. Mağazaya getmək, növbədə durmaq və böyük bir hipermarketlərdə gəzmək lazım deyil,
+                                    bir neç…
+                                </p>
+                                <a asp-controller="about" asp-action="blog">Davamını oxu</a>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="item">
+                                <img style="width: 100%; height:100%;" src="~/assets/IMG/blog-image/1_Masa-stol-oturacaq-stul-qonaq-stolu-metbex-masasi-3-Ehome.az.jpg" alt="">
+                            </div>
+                            <div class="info">
+                                <h5>Həyatınızda baş verən anlar üçün masa</h5>
+                                <p>
+                                    Masa – evdə olan əsas mebellərdən biridir. Onsuz qida qəbulunu , yemək hazırlanmasını, iş
+                                    görməyi, stolüstü oyunları, bayram günlərində və ya ailənizlə birgə adi günlərdə
+                                    yığıncaqları keçirməyə təsəvvür etmək olmur.
+                                    Otağın mebellərlə yerləşdirilməsi üçün bir və ya iki çox funksional model yetər…
+                                </p>
+                                <a asp-controller="about" asp-action="blog">Davamını oxu</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="partnyor">
+            <div class="container">
+                <div class="row">
+                    <div class="head mt-3">
+                        <p>PARTNYORLAR</p>
+                    </div>
+                    <div class="carusel owl-carousel owl-theme">
+                        @foreach (Partnyor item in Model.Partnyors)
+                        {
+                            <div class="item">
+                            <a href=""><img style="width: 100%; height:100%" src="~/assets/IMG/partnyor-image/@item.Name" alt="">
+                            </a>
+                        </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="about">
+            <div class="container">
+                <div class="row">
+                    <div class="head mt-3">
+                        <p>EHOME.AZ HAQQINDA</p>
+                    </div>
+                    <div class="select">
+                        <h2>"Ehome.az" - müasir, gənc və şübhəsiz ki, dinamik şəkildə inkişaf edən mebel satışı ilə məşğul olan bir şirkətdir. Biz, istənilən interyerin ayrılmaz hissəsinə çeviriləcək mebel hissələrinin müxtəlif üslubda – klassikadan, modernə qədər satışı ilə professional məşğul oluruq.
+                        </h2>
+                        <h2>Mebeli evinizdən çıxmadan, saytımızdan rahat bir kresloda oturaraq da sifariş edə bilərsiniz. Hər gün saytımızı sizin üçün daha yaxşı və rahat hala gətiririk. Peşakar konsultantlarımız  öz sahələrinin mütəxəssisləridir, məhsulla bağlı bütün suallarınızı mütləq cavablandıracaq və Sizə ən optimal variantları seçməyinizdə yardımçı olacaqlar.</h2>
+                        <span>
+                            <h4>Geniş seçim
+                            </h4>
+                        </span>
+                        <span>
+                            <h2>Şirkətin kataloqunda bütün mebel çeşidləri təqdim olunmuşdur: yataq otağı, qonaq otağı, uşaq, iş otağı, dəhliz, mətbəx, vanna otağı üçün mebel, yumşaq mebel, döşəklər və s.
+                            </h2>
+                        </span>
+                        <ul>
+                            <li>Müxtəlif rəng tonlarında;</li>
+                            <li>Müxtəlif üslublarda;</li>
+                            <li>Müxtəlif qiymət aralıqlarında.</li>
+                        </ul>
+                        <span>
+                            <h4>Fərdilik
+                            </h4>
+                        </span>
+                        <span>
+                            <h2>Modul mebel Sizin istək və tələbatlarınız üçün kompozisiyanı tərtib etməyə imkan verir və beləliklə sözün əsl mənasında unikal interyer təşkil olunur.
+                                Həm bütün ev üçün eyni üslubda, həm də hər otaq üçün fərqli üslubda mebel seçmək fürsətiniz var.
+                            </h2>
+                        </span>
+                        <span>
+                            <h4>Peşəkar konsultasiya
+                            </h4>
+                        </span>
+                        <span>
+                            <h2>Hər hansı bir sualınız varsa və ya sadəcə məsləhətləşmək istəsəniz, bizim konsultatlarımız:</h2>
+                        </span>
+                        <ul>
+                            <li>Maraqlandığınız mebel modeli haqda bütün məlumatı verəcək
+                            </li>
+                            <li>Mebeli seçməyə, kompozisiya yığmağa, hər şeyi ən kiçik detallara qədər düşünməyə kömək edəcəklər;
+                            </li>
+                            <li>Sizə, Sizin üçün ən rahat olan ödəmə üsulu haqda məlumat verəcəklər.
+                            </li>
+                            <li>Sizə endirimli və sərfəli alış-veriş etməyə köməklik edəcəklər
+                            </li>
+                        </ul>
+                        <span>
+                            <h4>Bizim üstünlüklərimiz</h4>
+                        </span>
+                        <span>
+                            <h2>Niyə mebeli  "Ehome.az" sifariş edək - bu sərfəli və praktikdir?
+                            </h2>
+                        </span>
+                        <ul>
+                            <li>Daha sürətli seçim etməyə kömək edən rahat bir sayt;
+                            </li>
+                            <li>Müxtəlif üslub və rəng həllərində hazırlanmış keyfiyyətli mebellərin geniş çeşidi;
+                            </li>
+                            <li>Daima yenilən kolleksiya;
+                            </li>
+                            <li>Məhsulların rahat filtrasiya sistemi, ətraflı xüsusiyyətləri və məhsulların fotoşəkilləri.
+                            </li>
+                            <li>Mənzilinizə, evinizə və ya ofisinizə uyğun mebel seçməyinizə kömək edəcək peşakar konsultantlar.
+                            </li>
+                            <li>Çatdırılma, mərtəbəyə qaldırılma və professional quraşdırılma daxil olmaqla geniş çeşidli xidmətlər.
+                            </li>
+                            <li>İş qrafikimiz xüsusu ilə Sizin rahatlığınız üçün təyin olunub. Saytımızda sifarişi istədiyiniz vaxt edə bilərsiniz və menecerimiz sifarişin detallarını dəqiqləşdirmək üçün qısa müddət ərzində sizinlə əlaqə saxlayacaq.
+                            </li>
+                        </ul>
+                        <span>
+                            <h2>Mağazamızda sifariş etməklə Siz, alışverişinizdən yalnız müsbət duyğular və məmnunluq hissi əldə edəcəksiniz.
+                            </h2>
+                        </span>
+                        <br>
+                        <span>
+                            <h2>Biz işçilərimizə dəyər veririk, yaxşı işçilərin uzun müddət bizimlə əməkdaşlıq etmələrini istəyirik. Buna görə də əlverişlı iş şəraiti ilə təmin edirik. Fərdin xüsusiyyət və qabiliyyətlərindən asılı olaraq fərdi yanaşma tətbiq edirik, şirkət daxilində əməkdaşlarımızın peşəkar inkişafına kömək edir və loyal insanları həvəsləndiririk.</h2>
+                        </span>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </section>     
+    </main>
+

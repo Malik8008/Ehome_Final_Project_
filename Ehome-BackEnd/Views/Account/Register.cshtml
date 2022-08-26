@@ -1,0 +1,41 @@
+﻿@using Ehome_BackEnd.ViewModels.AccountVM
+@model RegisterVM
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<main>
+    <div id="register">
+        <div class="container">
+            <div class="row">
+                <form method="post">
+                    <div class="registermain">
+                        <div class="head mt-3">
+                            <h4>Xoş Gəldiniz</h4>
+                        </div>
+                        <div class="registerinputs">
+                            <input style="width: 300px;" asp-for="Name" type="text" class="form-control" placeholder="Ad" aria-label="Ad" aria-describedby="basic-addon1">
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                            <input style="width: 300px;" asp-for="Surname" type="text" class="form-control mt-1" placeholder="Soyad" aria-label="Soyad" aria-describedby="basic-addon1">
+                            <span asp-validation-for="Surname" class="text-danger"></span>
+                            <input style="width: 300px;" asp-for="Email" type="email" class="form-control mt-1" placeholder="E-poçt" aria-label="E-poçt" aria-describedby="basic-addon1">
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                            <input style="width: 300px;" asp-for="Phone" type="tel" class="form-control mt-1" placeholder="Nömrə" aria-label="Nömrə" aria-describedby="basic-addon1">
+                            <span asp-validation-for="Phone" class="text-danger"></span>
+                            <input style="width: 300px;" asp-for="Password" type="password" class="form-control mt-1" placeholder="Şifrə" aria-label="Şifrə" aria-describedby="basic-addon1">
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                            <input style="width: 300px;" asp-for="ConfirmPassword" type="password" class="form-control mt-1" placeholder="Şifrə(təkrar)" aria-label="Şifrə" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                        <div class="daxil mt-2">
+                            <button type="submit">Davam edin</button>
+                            <p>Hesabınız var? <a asp-controller="account" asp-action="login">Daxil ol</a></p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </main>
+

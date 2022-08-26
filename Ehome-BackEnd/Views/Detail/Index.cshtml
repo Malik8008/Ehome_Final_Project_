@@ -1,0 +1,289 @@
+﻿@using Ehome_BackEnd.Models
+@using Ehome_BackEnd.ViewModels.HomeVM
+@model HomeVM
+
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<main>
+        <div class="container">
+            <div class="row mt-3">
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Əsas səhifə</a></li>
+                        <li class="breadcrumb-item active">Miqas</li>  
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <section id="detail">
+            <div class="container">
+                <div class="row">
+                    <div class="head mt-3">
+                        <p>Miqas</p>
+                    </div>
+                    <div class="col-lg-9">
+                        <div class="product-image d-flex">
+                            <div class="col-lg-2">
+                                <ul class="list-unstyled">
+                                    @foreach (Futniture other in Model.Futnitures)
+                                   {
+                                       <li><a href=""><img class="active" style="width: 100%;" src="~/assets/IMG/furnitures/@other.FurnitureImages.FirstOrDefault(m=>m.IsMain==false)?.Image" alt=""></a> </li>
+                                   }
+                                </ul>
+                            </div>
+                            <div class="col-lg-10" style="width:80%;">
+                                <div class="product-image-main">
+                                    <div class="detailcarousel owl-carousel owl-theme">
+                                        @foreach (var item in Model.Futnitures)
+                                        {
+                                        <div class="item"><img style="width: 100%;" src="~/assets/IMG/furnitures/@item.FurnitureImages.FirstOrDefault(m=>m.IsMain==true)?.Image" alt="">
+                                            <div class="product-image-icon">
+                                                <li><a asp-controller="basket" asp-action="WishlistAdd" asp-route-id="@item.Id"><i class="fa-solid fa-heart"></i></a></li>
+                                            </div>
+                                        </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-service mt-3">
+                            <ul class="d-flex justify-content-between list-unstyled">
+                                <li>
+                                    <i class="fa-solid fa-truck"></i>
+                                    <p>Pulsuz çatdırılma</p>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-circle-check"></i>
+                                    <p>2 il zəmanət</p>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-credit-card"></i>
+                                    <p>Kredit</p>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-pen-ruler"></i>
+                                    <p>Ölçü xidməti və dizayn</p>
+                                </li>
+                                <li>
+                                    <i class="fa-regular fa-credit-card"></i>
+                                    <p>Kartla ödəmə</p>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-money-bill-wave"></i>
+                                    <p>Onlayn ödəmə</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="product-questions mt-3">
+                            <div class="accordion" id="accordionExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingOne">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                                            aria-expanded="false" aria-controls="collapseOne">
+                                            <h5>Məhsulun xüsusiyyətləri</h5>
+                                        </button>
+                                    </h2>
+                                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                                        data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            @foreach (var general in Model.Futnitures)
+                                           {
+                                               <h6>Futniture Category:</h6>
+                                               <p>@general.Category.Name</p>
+                                               <h6>Futniture Color:</h6>
+                                               <p>@general.Color.Name</p>
+                                               <h6>Futniture Country:</h6>
+                                               <p>@general.Country.Name</p>
+                                               <h6>Futniture Matreal:</h6>
+                                               <p>@general.Matreal.Name</p>
+                                               <h6>Futniture Marka:</h6>
+                                               <p>@general.Brand.Name</p>
+                                           }   
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingTwo">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                                            aria-expanded="false" aria-controls="collapseTwo">
+                                            <h5>Çatdırılma və quraşdırılma</h5>
+                                        </button>
+                                    </h2>
+                                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                        data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <p>Biz, bizdən əldə olunan istənilən mebelin operativ çatdırılmasını, mərtəbəyə qaldırılmasını və keyfiyyətli quraşdırılmasını həyata keçiririk! Mənzilə (mərtəbəyə) qaldırılma, öz işinə görə tam məsuliyyət daşıyan peşəkar fəhlə briqadası tərəfindən həyata keçirilən əlavə xidmətdir. İlk üç mərtəbə mebelin qiymətinə daxil edilir. Mərtəbə sayına görə əlavə ödəniş tələb oluna bilər. "Ehome.az" saytında təqdim olunan bütün məhsullar Bakı və Xırdalan şəhər ərazisində tamamilə pulsuz çatdırılır və yığılır. Bölgələrə çatdırılma da həyata keçirilir, lakin əlavə ödənişlə və kilometraja əsasən hesablanır. Biz istəyinizə uyğun hər növ mebeli qısa müddət ərzində (sifarişin çətinlik dərəcəsindən asılı olaraq 4-20 gün ərzində) sizin evinizə çatdırırıq.
+                                                 <br>
+                                                 <br>
+                                            Çatdırılma xidməti üzrə mütəxəssislər mebelinizi sürətli, təhlükəsiz şəkildə və əlverişli şərtlərlə çatdıracaq. Çatdırılma və quraşdırma vaxtı tərəflərin razılığı əsasında təyin olunur.
+                                                <br>
+                                                <br>
+                                                Ətraflı məlumat üçün menecerimizlə +994(50)204 90 01 nömrə ilə əlaqə saxlayın.
+                                            </p>    
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingThree">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                            <h5>Ödəniş</h5>
+                                        </button>
+                                    </h2>
+                                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                                        data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <p>Sifariş zamanı aşağıda təklif olunan bir neçə ödəmə üsulu arasından sizin üçün ən uyğununu seçə bilərsiniz:</p>
+                                            <h6 class="ms-5">1.Saytda kart vasitəsi ilə (onlayn)</h6>
+                                            <p>Sifarişi rəsmiləşdirərkən Visa və ya Mastercard kartları vasitəsilə ödəniş metodunu seçin, bundan sonra siz təhlükəsiz ödəniş səhifəsinə keçid alacaqsınız. Visa, Visa Electron, MasterCard, Maestro plastik kart vasitəsi ilə də ödəniş həyata keçirilə bilər.</p>
+                                            <h6 class="ms-5">2.Sizə uyğun olan yerdə</h6>
+                                            <p>Sifarişin rəsmiləşdirilməsi zamanı ödənişin bir hissəsi (ümumi məbləğin 30% - i) ölçüyə şirkətin nümayəndəsi gəldiyi zaman, qalan hissəsi isə çatdırılma və quraşdırılma zamanı həyata keçirilir.</p>
+                                            <h6 class="ms-5">3.Mağazada ödəniş</h6>
+                                            <p>Siz, ilkin ödənişi (ümumi məbləğin 30% - i) Binəqədi ray., Mir Cəlal 11c ünvanda yerləşən salonumuza yaxınlaşaraq edə bilərsiniz. Ödənişin qalan hissəsi isə çatdırılma və quraşdırılma zamanı həyata keçirilir.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingFour">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                            <h5>Kredit şərtlərimiz</h5>
+                                        </button>
+                                    </h2>
+                                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                                        data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <ul>
+                                                <li>Azərbaycan Respublikasının vətəndaşı olmaq;</li>
+                                                <li>rəsmi iş yeri;</li>
+                                                <li>yaş həddi – 18 yaşdan 65 yaşadək (müqavilənin bitdiyi anda 65 olmalıdır);</li>
+                                                <li>kredit müddəti 6 aydan 12 ayadək;</li>
+                                                <li>ilkin ödənişsiz və faizsiz verilir;</li>
+                                                <li>ödəniş E – manat və Milli Ön terminal vasitəsi ilə mümkündür.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div> 
+                            </div>
+                        </div>
+                        <div class="product-form mt-5">
+                            <form method="post" >
+                                <div class="product-input d-flex justify-content-between">
+                                <div class="col-lg-6">
+                                    <input style="width: 96%;" asp-for="comment.Name" placeholder="Ad">
+                                    <span asp-validation-for="comment.Name"></span>
+                                </div>
+                                <div class="col-lg-6 d-flex justify-content-end">
+                                    <input style="width: 96%;" asp-for="comment.Email" placeholder="E-poçt">
+                                    <span asp-validation-for="comment.Email"></span>
+                                </div>
+                            </div>
+                            <div class="product-textarea">
+                                <div class="col-lg-12">
+                                    <textarea style="width: 100%;" cols="30" rows="4" asp-for="comment.Rey" placeholder="Rəyiniz"></textarea>
+                                    <span asp-validation-for="comment.Rey"></span>
+                                </div>
+                            </div>
+                            <div class="product-post mt-3">
+                                <div class="product-social d-flex justify-content-between justify-content-around">
+                                    <div class="facebook">
+                                        <a href="">
+                                            <i class="fa-brands fa-facebook-f"></i>
+                                            <span>Facebook</span>
+                                        </a>
+                                    </div>
+                                    <div class="tweet">
+                                        <a href="">
+                                            <i class="fa-brands fa-twitter"></i>
+                                            <span>Tweet</span>
+                                        </a>
+                                    </div>
+                                    <div class="share">
+                                        <a href="">
+                                            <i class="fa-solid fa-square-plus"></i>
+                                            <span>Paylaş</span>
+                                        </a>
+                                    </div>
+                                    <div class="post-button">
+                                        <button type="submit"><a >Göndər</a></button>
+                                    </div>
+                                </div>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="col3right">
+                            <div class="credit">
+                                @foreach (var item in Model.Futnitures)
+                               {
+                                   <p>Kreditlə: <span style="color: #49bd68;">@item.SalePrice.ToString("#") ₼</span> </p>
+                               }
+                               
+                            </div>
+                            <div class="cash d-flex justify-content-center">
+                                @foreach (var dis in Model.Futnitures)
+                               {
+                                   <div class="cashname">
+                                    <p>Nagd:</p>
+                                </div>
+                                <div class="cashpercent ms-1">
+                                    @dis.Discount%
+                                </div>
+                                <div class="cashmoney ms-1">
+                                    <span>@((dis.SalePrice-(dis.SalePrice*dis.Discount/100)).ToString("#")) ₼</span>
+                                </div>
+                               }
+                            </div>
+                            <div class="qenaet d-flex justify-content-center">
+                                @foreach (var disprice in Model.Futnitures)
+                               {
+                                    <div class="qenaetpercent">
+                                    <p>@disprice.Discount%</p>
+                                </div>
+                                <div class="qenaetmain">
+                                    <p>Qənaət @((disprice.SalePrice*disprice.Discount/100).ToString("#"))₼</p>
+                                </div>
+                               }
+                            </div>
+                            <div class="col3manat">
+                                <p>0₼ 0% 12 ay</p>
+                            </div>
+                            <div class="month">
+                                @foreach (var mothn in Model.Futnitures)
+                               {
+                                   <p>Ayda @((mothn.SalePrice/12).ToString("#")) Azn</p>
+                               }
+                            </div>
+                            <div class="birkart d-flex justify-content-center">
+                                <div class="birimage w-25">
+                                    <img style="width: 100%;" src="~/assets/IMG/other-images/bir.png" alt="">
+                                </div>
+                                <div class="birkartinfo mt-2 ms-2">
+                                    @foreach (var sixmonth in Model.Futnitures)
+                                   {
+                                       <p>6 ay @((sixmonth.SalePrice/6).ToString("#"))₼</p>
+                                   }
+                                </div>
+                            </div>
+                            <div class="bottominfo">
+                                <p>Anbarda kifayət qədər var.</p>
+                                <p class="text-muted">Art.: 7499302121</p>
+                            </div>
+                            <div class="col3buy">
+                                @foreach (var bas in Model.Futnitures)
+                               {
+                                   <button><a class="add-basket" data-id="@bas.Id">Səbətə at</a></button>
+                               }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+

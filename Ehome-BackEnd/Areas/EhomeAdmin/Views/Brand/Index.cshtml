@@ -1,0 +1,69 @@
+﻿@using Ehome_BackEnd.Models
+@model List<Brand>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="table-responsive pt-3">
+     <a asp-controller="brand" asp-action="create" style="color:white;font-size:20px" class="mb-3 btn btn-success">Create brand object</a>
+
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                 <th>
+                    Settings
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Brand brand in Model)
+            {
+                if(!brand.IsDeleted)
+                {
+                    <tr>
+                    <td>
+                        @brand.Name
+                    </td>
+                    <td>
+                        <div class="d-flex">
+                            <div class="edit">
+                                <a asp-controller="brand" asp-action="Edit" asp-route-id="@brand.Id" class="btn btn-warning"><i class="fa-solid fa-pen-to-square" style="color:white;"></i>
+                                    <i class="mdi mdi-tooltip-edit"></i>
+                                </a>
+                            </div>
+                            <div class="delete">
+                                <a asp-controller="brand" asp-action="Delete" asp-route-id="@brand.Id" class="btn btn-danger"> <i class="fa-solid fa-trash"></i></a>
+                            </div>
+                        </div>
+                    </td>
+                    </tr>
+                }
+                else
+                {
+                    <tr style="color:red !important">
+                    <td>
+                        @brand.Name
+                    </td>
+                    <td>
+                        <div class="d-flex">
+                            <div class="edit">
+                                <a asp-controller="brand" asp-action="Edit" asp-route-id="@brand.Id" class="btn btn-warning"><i class="fa-solid fa-pen-to-square" style="color:white;"></i>
+                                    <i class="mdi mdi-tooltip-edit"></i>
+                                </a>
+                            </div>
+                            <div class="delete">
+                                <a asp-controller="brand" asp-action="Delete" asp-route-id="@brand.Id" class="btn btn-danger"> <i class="fa-solid fa-trash"></i></a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+

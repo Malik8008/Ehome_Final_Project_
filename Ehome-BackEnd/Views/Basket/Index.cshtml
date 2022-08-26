@@ -1,0 +1,53 @@
+﻿@using Ehome_BackEnd.Models
+@using Ehome_BackEnd.ViewModels.HomeVM
+@model HomeVM
+@{
+    ViewData["Title"] = "Index";
+    List<WishlistItem> wishlistItems = await layoutservice.GetWishlit(User.Identity.Name);
+}
+
+  <main>
+    <section id="basketTable">
+        <div class="container">
+            <div class="row">
+
+                <table class="table table-light pt-5">
+                    <thead>
+                        <tr>
+                            <th scope="col">Image</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (WishlistItem item in wishlistItems)
+                        {
+                            <tr>
+                                <td>
+                                    <img style="width:150px; height:100px;" src="~/assets/IMG/furnitures/@item.Futniture.FurnitureImages.FirstOrDefault(x=>x.IsMain==true).Image" alt="">
+                                </td>
+                                <td>@item.Futniture.Name</td>
+                                <td>@item.Futniture.SalePrice</td>
+                                <td> <a asp-controller="Basket" asp-action="DeleteBasket" asp-route-id="@item.Futniture.Id"><i style="color:black" class="fa-solid fa-xmark"></i></a> </td>
+                            </tr>
+                        }
+
+
+
+                    </tbody>
+
+                </table>
+            </div>
+            @if (wishlistItems.Count==0)
+            {
+                <h2 style="color:white;">Wishlist Is Empty</h2>
+            }
+
+        </div>
+
+    </section>
+</main>
+
+

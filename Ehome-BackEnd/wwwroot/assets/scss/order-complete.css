@@ -1,0 +1,69 @@
+#order {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+#order .row {
+  padding: 60px;
+  border: 2px solid rgba(128, 128, 128, 0.2);
+}
+#order .col-lg-7 {
+  max-width: 58%;
+  border: 1px solid rgba(128, 128, 128, 0.2);
+  padding: 30px;
+}
+#order .col-lg-7 .orderhead h6 {
+  font-size: 25px;
+}
+#order .col-lg-7 .orderinputs button {
+  border: none;
+  padding: 6px;
+  background-color: #49bd68;
+}
+#order .col-lg-7 .orderinputs button a {
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+  font-weight: 500;
+}
+#order .col-lg-5 {
+  max-height: 350px;
+  max-width: 40%;
+  border: 1px solid rgba(128, 128, 128, 0.2);
+  padding: 30px;
+}
+#order .col-lg-5 .order-about {
+  padding: 15px;
+  border-bottom: 2px solid rgba(128, 128, 128, 0.2);
+}
+#order .col-lg-5 .orderchoose span {
+  font-size: 20px;
+  font-weight: 500;
+}
+#order .col-lg-5 .orderchoose p {
+  font-size: 13px;
+}
+#order .col-lg-5 .ordersum p {
+  font-size: 18px;
+  font-weight: 500;
+}
+#order .col-lg-5 .ordersum span {
+  font-weight: 500;
+}
+
+@media only screen and (max-width: 992px) {
+  #order .container .row {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+  }
+  #order .container .row .col-lg-7 {
+    max-width: 100%;
+  }
+  #order .container .row .col-lg-5 {
+    max-width: 100%;
+    max-height: 100%;
+  }
+}/*# sourceMappingURL=order-complete.css.map */

@@ -1,0 +1,24 @@
+﻿@using Ehome_BackEnd.Models
+@model Slider
+
+@{
+    ViewData["Title"] = "Detail";
+}
+<div class="ms-3">
+    <div>
+        <h4>
+            Id
+        </h4>
+        <p>
+            @Model.Id
+        </p>
+    </div>
+    <div>
+        <h4>
+            Image
+        </h4>
+        <p>
+            <img style="width: 400px; height:140px" src="~/assets/IMG/slider-image/@Model.Image"/>
+        </p>
+    </div>
+</div>

@@ -1,0 +1,69 @@
+﻿@using Ehome_BackEnd.Models
+@model List<Matreal>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="table-responsive pt-3">
+     <a asp-controller="matreal" asp-action="create" style="color:white;font-size:20px" class="mb-3 btn btn-success">Create matreal object</a>
+
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                 <th>
+                    Settings
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Matreal matreal in Model)
+            {
+                if(!matreal.IsDeleted)
+                {
+                    <tr>
+                    <td>
+                        @matreal.Name
+                    </td>
+                    <td>
+                        <div class="d-flex">
+                            <div class="edit">
+                                <a asp-controller="matreal" asp-action="Edit" asp-route-id="@matreal.Id" class="btn btn-warning"><i class="fa-solid fa-pen-to-square" style="color:white;"></i>
+                                    <i class="mdi mdi-tooltip-edit"></i>
+                                </a>
+                            </div>
+                            <div class="delete">
+                                <a asp-controller="matreal" asp-action="Delete" asp-route-id="@matreal.Id" class="btn btn-danger"> <i class="fa-solid fa-trash"></i></a>
+                            </div>
+                        </div>
+                    </td>
+                    </tr>
+                }
+                else
+                {
+                    <tr style="color:red !important">
+                    <td>
+                        @matreal.Name
+                    </td>
+                    <td>
+                        <div class="d-flex">
+                            <div class="edit">
+                                <a asp-controller="matreal" asp-action="Edit" asp-route-id="@matreal.Id" class="btn btn-warning"><i class="fa-solid fa-pen-to-square" style="color:white;"></i>
+                                    <i class="mdi mdi-tooltip-edit"></i>
+                                </a>
+                            </div>
+                            <div class="delete">
+                                <a asp-controller="matreal" asp-action="Delete" asp-route-id="@matreal.Id" class="btn btn-danger"> <i class="fa-solid fa-trash"></i></a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+

@@ -1,0 +1,49 @@
+﻿@using Ehome_BackEnd.Models
+@model List<Comment>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="table-responsive pt-3">
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                    Comment
+                </th>
+                 <th>
+                    Settings
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Comment comment in Model)
+            {
+                <tr>
+                    <td>
+                        @comment.Name
+                    </td>
+                    <td>
+                        @comment.Email
+                    </td>
+                    <td>
+                        @comment.Rey
+                    </td>
+                    <td>
+                        <div class="delete">
+                                <a asp-controller="comment" asp-action="delete" asp-route-id="@comment.Id" class="btn btn-danger"> <i class="fa-solid fa-trash"></i></a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

@@ -1,0 +1,342 @@
+﻿@using Ehome_BackEnd.Models
+@using Ehome_BackEnd.ViewModels.HomeVM
+@model HomeVM
+
+
+
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, AuthoringTagHelpers
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<main>
+        <div class="container">
+            <div class="row mt-3">
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Əsas səhifə</a></li>
+                        @foreach (var categor in Model.Categories)
+                       {
+                           <li class="breadcrumb-item active">@categor.Name</li>
+                       }  
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <section id="category">
+            <div class="container">
+                <div class="row">
+                    <div class="head">
+                        @foreach (Category cate in Model.Categories)
+                       {
+                           <p>@cate.Name</p>
+                       }
+                    </div>          
+                </div> 
+                <div id="sofa">
+                    <div class="row d-flex justify-content-between">
+                        <div class="col-lg-4 d-flex justify-content-between">
+                            <h6>Mətbəx mebeli</h6>
+                            <span><i class="fa-solid fa-align-justify"></i></span>
+                            <span><i class="fa-solid fa-table-cells"></i></span>
+                        </div>
+                        <div class="col-lg-4 d-flex justify-content-center">
+                            <select style="height: 30px; width: 150px;" name="" id="">
+                                <option value="">Ada Gore (A-Z)</option>
+                                <option value="">Ada Gore (Z-A)</option>
+                                <option value="">Ucuzdan-Bahaya</option>
+                                <option value="">Bahadan-Ucuza</option>
+                                <option value="">Yeni Mehsul</option>
+                                <option value="">Köhnə Mehsul</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-4 d-flex justify-content-end">
+                            <div class="icon">
+                                <i class="fa-solid fa-eye"></i>
+                            </div>
+                            <div class="iconnom">
+                                <ul class="d-flex justify-content-around w-100">
+                                    <li class="active">16</li>
+                                    <li>48</li>
+                                    <li>72</li>
+                                    <li>96</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div id="categories">
+                        <ul>
+                            <li><a class="cat-li" href="">Rəng<i class="fa-solid fa-caret-down"></i></a></li>
+                            <li><a class="cat-lim" href="">Matreal<i class="fa-solid fa-caret-down"></i></a></li>
+                            <li><a class="cat-lib" href="">Marka<i class="fa-solid fa-caret-down"></i></a></li>
+                            <li><a class="cat-lil" href="">Olke<i class="fa-solid fa-caret-down"></i></a></li>
+                        </ul>           
+                    </div>
+                    <div class="catli">
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <input type="checkbox" value="" id="flexCheckDefault">
+                                <label for="flexCheckDefault">
+                                    Ağ
+                                </label>
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="checkbox" value="" id="flexCheckDefault">
+                                <label for="flexCheckDefault">
+                                    Qara
+                                </label>
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="checkbox" value="" id="flexCheckDefault">
+                                <label for="flexCheckDefault">
+                                    Qəhvəyi
+                                </label>
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="checkbox" value="" id="flexCheckDefault">
+                                <label for="flexCheckDefault">
+                                    Ağ parlaq
+                                </label>
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="checkbox" value="" id="flexCheckDefault">
+                                <label for="flexCheckDefault">
+                                    Qara parlaq
+                                </label>
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="checkbox" value="" id="flexCheckDefault">
+                                <label for="flexCheckDefault">
+                                    Krem
+                                </label>
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="checkbox" value="" id="flexCheckDefault">
+                                <label for="flexCheckDefault">
+                                    Qırmızı
+                                </label>
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="checkbox" value="" id="flexCheckDefault">
+                                <label for="flexCheckDefault">
+                                    Sarı
+                                </label>
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="checkbox" value="" id="flexCheckDefault">
+                                <label for="flexCheckDefault">
+                                    Mavi
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="catlim">
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <input type="checkbox" value="" id="flexCheckDefault">
+                                <label for="flexCheckDefault">
+                                    MDF
+                                </label>
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="checkbox" value="" id="flexCheckDefault">
+                                <label for="flexCheckDefault">
+                                    Akril
+                                </label>
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="checkbox" value="" id="flexCheckDefault">
+                                <label for="flexCheckDefault">
+                                    LDSP
+                                </label>
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="checkbox" value="" id="flexCheckDefault">
+                                <label for="flexCheckDefault">
+                                    Membran
+                                </label>
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="checkbox" value="" id="flexCheckDefault">
+                                <label for="flexCheckDefault">
+                                    Plastik
+                                </label>
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="checkbox" value="" id="flexCheckDefault">
+                                <label for="flexCheckDefault">
+                                    Metal
+                                </label>
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="checkbox" value="" id="flexCheckDefault">
+                                <label for="flexCheckDefault">          
+                                    Şpon
+                                </label>
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="checkbox" value="" id="flexCheckDefault">
+                                <label for="flexCheckDefault">
+                                    Verzalit
+                                </label>
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="checkbox" value="" id="flexCheckDefault">
+                                <label for="flexCheckDefault">
+                                    Fıstıq ağacı
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="catlib">
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <input type="checkbox" value="" id="flexCheckDefault">
+                                <label for="flexCheckDefault">                                    
+                                    Foriella
+                                </label>
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="checkbox" value="" id="flexCheckDefault">
+                                <label for="flexCheckDefault">
+                                    Greenwood
+                                </label>
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="checkbox" value="" id="flexCheckDefault">
+                                <label for="flexCheckDefault">
+                                    Filiz Mobilya
+                                </label>
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="checkbox" value="" id="flexCheckDefault">
+                                <label for="flexCheckDefault">                                    
+                                   Gümüş Mobilya
+                                </label>
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="checkbox" value="" id="flexCheckDefault">
+                                <label for="flexCheckDefault">
+                                    "Ehome"
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="catlil">
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <input type="checkbox" value="" id="flexCheckDefault">
+                                <label for="flexCheckDefault">
+                                    Azərbaycan
+                                </label>
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="checkbox" value="" id="flexCheckDefault">
+                                <label for="flexCheckDefault">
+                                    Türkiyə
+                                </label>
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="checkbox" value="" id="flexCheckDefault">
+                                <label for="flexCheckDefault">                                    
+                                    Ukraina
+                                </label>
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="checkbox" value="" id="flexCheckDefault">
+                                <label for="flexCheckDefault">                                    
+                                    Çin
+                                </label>
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="checkbox" value="" id="flexCheckDefault">
+                                <label for="flexCheckDefault">
+                                    Rusiya
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="search">
+                        <a href=""><button type="submit">Axtar</button></a>
+                    </div>
+                    <div class="sofacount">
+                        <p>@Model.Futnitures.Count məhsul</p>
+                    </div>
+                </div>
+                <div class="row">
+                    @foreach (Futniture futniture in Model.Futnitures.Take(16))
+                        {
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="cards">
+                            <div class="categorycard mt-3">
+                                <div class="col-lg-12">
+                                    <div class="image">
+                                        <a asp-controller="detail" asp-action="index" asp-route-id="@futniture.Id"><img style="width: 87%;" src="~/assets/IMG/furnitures/@futniture.FurnitureImages.FirstOrDefault(m=>m.IsMain==true).Image" alt=""></a>
+                                        <div class="manat">
+                                            <p>0₼ 0% 12 ay</p>
+                                        </div>
+                                        <div class="righticon">
+                                            <ul>
+                                                <li><a asp-controller="basket" asp-action="WishlistAdd" asp-route-id="@futniture.Id"><i class="fa-solid fa-heart"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="icon">
+                                        <ul class="d-flex">
+                                            <li><i class="fa-solid fa-star"></i></li>
+                                            <li><i class="fa-solid fa-star"></i></li>
+                                            <li><i class="fa-solid fa-star"></i></li>
+                                            <li><i class="fa-solid fa-star"></i></li>
+                                            <li><i class="fa-solid fa-star"></i></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="info">
+                                        <div class="mean ms-4">
+                                            <p>@futniture.Name</p>
+                                        </div>
+                                        <div class="price ms-4 mt-4">
+                                            <p>Kreditle: <span>@futniture.SalePrice.ToString("#.##") ₼</span></p>
+                                        </div>
+                                        <div class="negd d-flex ms-4">
+                                            <div class="name">
+                                                <p>Nağd:</p>
+                                            </div>
+                                            <div class="discount ms-1">
+                                                <span>-@futniture.Discount%</span>
+                                            </div>
+                                            <div class="maney ms-2">
+                                                <p>@((futniture.SalePrice-(futniture.SalePrice*futniture.Discount/100)).ToString("#")) ₼</p>
+                                            </div>
+                                        </div>
+                                        <div class="buy">
+                                            <a class="add-basket" data-id="@futniture.Id"><i class="fa-solid fa-cart-shopping"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                            }                 
+                </div>
+                <div class="row">
+                    <div class="pagination">
+                        <ul>
+                            <li><a href=""><i class="fa-solid fa-angles-left"></i></a></li>
+                            <li class="active"><a href="">1</a></li>
+                            <li><a href=""><i class="fa-solid fa-angles-right"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+

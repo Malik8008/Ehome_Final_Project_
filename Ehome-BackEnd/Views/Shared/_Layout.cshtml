@@ -1,0 +1,383 @@
+﻿@using Ehome_BackEnd.Models
+@using System.Linq;
+@using Ehome_BackEnd.ViewModels.Furniture
+@using Ehome_BackEnd.ViewModels.HomeVM
+@inject LayoutService service;
+@{
+    List<Category> categories = await layoutservice.GetCategories();
+    List<Slider> sliders = await layoutservice.GetSlider();
+    List<BasketVM> basketVMs = service.GetBasket();
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/assets/scss/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/assets/scss/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/assets/scss/style.css">
+    <title>Ehome.az</title>
+</head>
+<body>
+    <button id="btnScrollTop">
+        <i class="fa-solid fa-angles-up"></i>
+    </button>
+    <div id="whatsapp">
+        <a href=""><img src="~/assets/IMG/call-image/wp2.png" alt=""></a>
+    </div>
+    <div id="rightfixedicon">
+        <ul>
+            <li class="basketmenu"><a href=""><i class="fa-solid fa-cart-shopping"><div class="sub"><sub>@basketVMs.Count</sub></div></i></a></li>
+            <li class="wishlistmenu"><a asp-controller="basket" asp-action="index"><i class="fa-solid fa-heart"></i></a></li>
+            <li><a href=""><i class="fa-solid fa-phone"></i></a></li>
+        </ul>
+    </div>
+    <div class="basketmenu-in">
+        <div class="head d-flex justify-content-between">
+            <div class="basketname">
+                <p>Səbət</p>
+            </div>
+            <div class="basketclose-icon">
+                <a class="closebasket" href=""><i class="fa-solid fa-xmark"></i></a>
+            </div>
+        </div>
+        <div class="basketmenu-product">
+            @await Html.PartialAsync("_PartialView",basketVMs)
+        </div>
+
+    </div>
+    <header>
+        <section id="headertop">
+            <div class="container">
+                <div class="row d-flex justify-content-between">
+                    <div class="col-lg-4">
+                        <div class="about mt-3">
+                            <ul class="d-flex justify-content-between">
+                                <li><a asp-controller="about" asp-action="about">HAQQIMIZDA</a></li>
+                                <li><a asp-controller="about" asp-action="unvan">ÜNVAN</a></li>
+                                <li><a asp-controller="about" asp-action="kredit">KREDİT</a></li>
+                                <li><a asp-controller="about" asp-action="odeme">ÖDƏMƏ ŞƏRTLƏRİ</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="comp mt-3">
+                            <ul class="d-flex justify-content-between justify-content-end">
+                                <li><a asp-controller="about" asp-action="kampaniya"><i style="font-size: 20px; color: white;" class="fa-solid fa-bullhorn"></i>  KAMPANİYALAR</a></li>
+                                <li><a asp-controller="about" asp-action="blog"><img style="width: 25px;" src="https://ehome.az/static/assets/images/001-writing.svg" alt="">BLOG</a></li>
+                                <li>
+                                    <a asp-controller="about" asp-action="questions">
+                                        <i style="font-size: 20px; color: white;" class="fa-solid fa-question"></i>
+                                        TEZ-TEZ VERİLEN SUALLAR
+                                    </a>
+                                </li>
+                                <li>
+                                    <select style="height: 25px;" name="" id="">
+                                        <option value="">AZ</option>
+                                        <option value="">RU</option>
+                                    </select>
+                                </li>
+                                <li><a href=""><img style="width: 135px; height: 32px;" src="~/assets/IMG/header-image/german.png" alt=""></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="headertoptwo">
+                        <div class="col-lg-12">
+                            <div class="comp mt-3">
+                                <ul class="d-flex justify-content-between">
+                                    <li><a asp-controller="about" asp-action="kampaniya"><i style="font-size: 20px; color: white;" class="fa-solid fa-bullhorn"></i>  KAMPANİYALAR</a></li>
+                                    <li><a asp-controller="about" asp-action="blog"><img style="width: 25px;" src="https://ehome.az/static/assets/images/001-writing.svg" alt="">BLOG</a></li>
+                                    <li>
+                                        <a asp-controller="about" asp-action="questions">
+                                            <i style="font-size: 20px; color: white;" class="fa-solid fa-question"></i>
+                                            TEZ-TEZ VERİLEN SUALLAR
+                                        </a>
+                                    </li>
+                                    <li><a href=""><img style="width: 135px; height: 32px;" src="~/assets/IMG/header-image/german.png" alt=""></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="headerbottom">
+            <div class="container">
+                <div class="row">
+                    <div class="bottom d-flex justify-content-between">
+                        <div class="col-lg-4 d-flex justify-content-between">
+                            <div class="logo">
+                                <a asp-controller="home" asp-action="index"><img style="width: 140px; height:55px;" src="~/assets/IMG/logo-image/@layoutservice.GetDatas().Result.FirstOrDefault(k=>k.Key=="HeaderLogo").Value" alt=""></a>
+                            </div>
+                            <form method="get">
+                                <div class="search mt-3">
+                                    <form>
+                                        <input type="search" value="@ViewBag.Search" name="search" placeholder="Axtarış">
+                                    </form>
+                                    <button style="border:none; background-color:white;" type="submit" asp-controller="search" asp-action="index"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-lg-4 d-flex justify-content-center">
+                            <div class="icon">
+                                <img style="width: 30px;" src="~/assets/IMG/call-image/@layoutservice.GetDatas().Result.FirstOrDefault(k=>k.Key=="EhomeCallimage").Value" alt="">
+                            </div>
+                            <div class="daily ms-2">
+                                <span style="max-width: 20px; color: red;">Çağrı Mərkəzi</span>
+                                <p class="text-muted">Hər gün 24/7</p>
+                            </div>
+                            <div class="phone ms-2">
+                                <a class="ringphone" href=""><p>@layoutservice.GetDatas().Result.FirstOrDefault(k=>k.Key=="EhomeCall").Value</p></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="sign">
+                                <ul class="d-flex justify-content-end justify-content-around">
+                                    @if (User.Identity.IsAuthenticated)
+                                    {
+                                        <li><a asp-controller="account" asp-action="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i></a></li>
+                                    }
+                                    else
+                                    {
+                                        <li><a asp-controller="account" asp-action="login"><i class="fa-solid fa-user"></i></a></li>
+
+                                    }
+                                    @if (User.Identity.IsAuthenticated)
+                                    {
+                                        <li><a asp-controller="account" asp-action="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i>Çıxış</a></li>
+                                    }
+                                    else
+                                    {
+                                        <li><a asp-controller="account" asp-action="login"><i class="fa-solid fa-user"></i>Giriş</a></li>
+
+                                    }
+                                    <li class="wishlistmenuhead"><a href=""><i class="fa-solid fa-heart"></i>Seçilmişlər</a></li>
+                                    <li class="basketmenuhead"><a href=""><i class="fa-solid fa-cart-shopping"><div class="sub"><sub>@basketVMs.Count</sub></div></i>Səbət</a></li>
+                                    <li class="menubar"><a href=""><i class="fa-solid fa-bars"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menubarin">
+                        <div class="top">
+                            <ul>
+                                <li>
+                                    <select class="ms-5" style="height: 25px; width: 70px;" name="" id="">
+                                        <option value="">AZ</option>
+                                        <option value="">RU</option>
+                                    </select>
+                                </li>
+                                <li><a asp-controller="about" asp-action="about"><i class="fa-solid fa-circle-info ms-5"></i> HAQQIMIZDA</a></li>
+                                <li><a asp-controller="about" asp-action="unvan"><i class="fa-solid fa-location-dot ms-5"></i> ÜNVAN</a></li>
+                                <li><a asp-controller="about" asp-action="kredit"><i class="fa-solid fa-credit-card ms-5"></i> KREDİT</a></li>
+                                <li><a asp-controller="about" asp-action="odeme"><i class="fa-solid fa-handshake-simple ms-5"></i> Ödəmə şərtləri</a></li>
+                                <li><a asp-controller="about" asp-action="questions"><i style="font-size: 14px; color: white;" class="fa-solid fa-question ms-5"></i> TEZ-TEZ VERİLEN SUALLAR</a></li>
+                            </ul>
+                            <ul>
+                                @foreach (Category category2 in categories)
+                                {
+                                    <li><a asp-controller="furniture" asp-action="index" asp-route-id="@category2.Id" class="ms-5">@category2.Name</a></li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form method ="get">
+                            <div class="searchtwo d-flex mt-2">
+                                <form>
+                                    <input name="search" value="@ViewBag.Search"  style="background-color: #f5f5f5;" type="search" placeholder="Axtarış">
+                                </form>
+                            <button style="border:none; background-color:white;"  type="submit" asp-controller="search" asp-action="index" ><i class="fa-solid fa-magnifying-glass mt-2 mx-2"></i></button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="herocategory">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="category">
+                            <ul class="d-flex justify-content-between">
+                                @foreach (Category category in categories)
+                                {
+                                    <li><a asp-controller="furniture" asp-action="index" asp-route-id="@category.Id">@category.Name</a></li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="slider">
+            <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    @{
+                        int i = 0;
+                    }
+                    @foreach (Slider slider in sliders)
+                    {
+                        i++;
+                        var active = i == 1 ? "active" : "";
+                        <div class="carousel-item @active" data-bs-interval="10000">
+                            <img src="~/assets/IMG/slider-image/@slider.Image" class="d-block w-100" alt="...">
+                        </div>
+                    }
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </section>
+    </header>
+    @RenderBody()
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 foot">
+                    <h6 class="active">Ehome.az</h6>
+                    <ul>
+                        <li><a asp-controller="about" asp-action="about">Haqqımızda</a></li>
+                        <li><a href="">Layihələrimiz</a></li>
+                        <li><a asp-controller="about" asp-action="Questions">Çatdırılma və quraşdırılma</a></li>
+                        <li><a href="">Ehome zəmanəti</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 foot">
+                    <h6>Müştəri üçün</h6>
+                    <ul>
+                        <li><a asp-controller="about" asp-action="Kredit">Kredit şərtləri</a></li>
+                        <li><a asp-controller="about" asp-action="Questions">Tez-tez verilen suallar</a></li>
+                        <li><a asp-controller="about" asp-action="Odeme">Ödəmə şərtləri</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 foot">
+                    <h6>Məlumat</h6>
+                    <ul>
+                        <li><a asp-controller="about" asp-action="unvan">Ünvan</a></li>
+                        <li><a href="">Partnyorlar</a></li>
+                        <li><a asp-controller="about" asp-action="kampaniya">Kampaniyalar</a></li>
+                        <li><a asp-controller="about" asp-action="blog">Bloq</a></li>
+                        <li><a href="">Karyera imkanı</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 foot">
+                    <h6>Əlaqə</h6>
+                    <div class="elaqe">
+                        <ul>
+                            <li><a asp-controller="about" asp-action="unvan">Ünvan: Bakı, Binəqədi r-nu, 9 mkr., Mir Cəlal 11C</a></li>
+                            <li><a href="">Telefon: 050 204 90 01</a></li>
+                            <li><a href="">E-poçt: office@Ehome.az</a></li>
+                            <li><a href="">Mağazanın iş saatları: 10:00 - 19:00</a></li>
+                        </ul>
+                    </div>
+                    <h6>Bizi izleyin</h6>
+                    <div class="inputs d-flex">
+                        <input type="email" placeholder="E-poçt daxil edin">
+                        <button type="submit">Abune ol</button>
+                    </div>
+                </div>
+                <hr class="mt-5">
+                <div class="footerend d-flex justify-content-between">
+                    <div class="col-lg-6 d-flex mt-1">
+                        <div class="col-lg-6">
+                            <h6>Biz sosial şəbəkələrdə</h6>
+                        </div>
+                        <div class="col-lg-6">
+                            <ul class="d-flex list-unstyled">
+                                <li><a href="@layoutservice.GetDatas().Result.FirstOrDefault(k=>k.Key=="Facebook").Url"><img style="width: 45px; height: 35px;" src="~/assets/IMG/social-image/@layoutservice.GetDatas().Result.FirstOrDefault(k=>k.Key=="Facebook").Value" alt=""></a></li>
+                                <li><a href="@layoutservice.GetDatas().Result.FirstOrDefault(k=>k.Key=="Instagram").Url"><img style="width: 45px; height: 35px;" src="~/assets/IMG/social-image/@layoutservice.GetDatas().Result.FirstOrDefault(k=>k.Key=="Instagram").Value" alt=""></a></li>
+                                <li><a href="@layoutservice.GetDatas().Result.FirstOrDefault(k=>k.Key=="Youtube").Url"><img style="width: 45px; height: 35px;" src="~/assets/IMG/social-image/@layoutservice.GetDatas().Result.FirstOrDefault(k=>k.Key=="Youtube").Value" alt=""></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <ul class="d-flex list-unstyled justify-content-between">
+                            <li><a href=""><img style="width: 64px;" src="~/assets/IMG/card-image/@layoutservice.GetDatas().Result.FirstOrDefault(k=>k.Key=="Visa").Value" alt=""></a></li>
+                            <li><a href=""><img style="width: 64px;" src="~/assets/IMG/card-image/@layoutservice.GetDatas().Result.FirstOrDefault(k=>k.Key=="Mastercard").Value" alt=""></a></li>
+                            <li><a href=""><img style="width: 64px;" src="~/assets/IMG/card-image/@layoutservice.GetDatas().Result.FirstOrDefault(k=>k.Key=="Cashback").Value" alt=""></a></li>
+                            <li><a href=""><img style="width: 64px;" src="~/assets/IMG/card-image/@layoutservice.GetDatas().Result.FirstOrDefault(k=>k.Key=="Albali").Value" alt=""></a></li>
+                            <li><a href=""><img style="width: 64px;" src="~/assets/IMG/card-image/@layoutservice.GetDatas().Result.FirstOrDefault(k=>k.Key=="BolAil").Value" alt=""></a></li>
+                            <li><a href=""><img style="width: 64px;" src="~/assets/IMG/card-image/@layoutservice.GetDatas().Result.FirstOrDefault(k=>k.Key=="YapiKredi").Value" alt=""></a></li>
+                            <li><a href=""><img style="width: 64px;" src="~/assets/IMG/card-image/@layoutservice.GetDatas().Result.FirstOrDefault(k=>k.Key=="TamKart").Value" alt=""></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="foottop d-flex align-items-center mt-1 w-100">
+                        <h6>Biz sosial şəbəkələrdə</h6>
+                        <ul class="d-flex list-unstyled">
+                            <li><a href="@layoutservice.GetDatas().Result.FirstOrDefault(k=>k.Key=="Facebook").Url"><img style="width: 45px; height: 35px;" src="~/assets/IMG/social-image/@layoutservice.GetDatas().Result.FirstOrDefault(k=>k.Key=="Facebook").Value" alt=""></a></li>
+                            <li><a href="@layoutservice.GetDatas().Result.FirstOrDefault(k=>k.Key=="Instagram").Url"><img style="width: 45px; height: 35px;" src="~/assets/IMG/social-image/@layoutservice.GetDatas().Result.FirstOrDefault(k=>k.Key=="Instagram").Value" alt=""></a></li>
+                            <li><a href="@layoutservice.GetDatas().Result.FirstOrDefault(k=>k.Key=="Youtube").Url"><img style="width: 45px; height: 35px;" src="~/assets/IMG/social-image/@layoutservice.GetDatas().Result.FirstOrDefault(k=>k.Key=="Youtube").Value" alt=""></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="bankcard">
+                        <ul class="d-flex justify-content-around">
+                            <li><a href=""><img style="width: 64px;" src="~/assets/IMG/card-image/@layoutservice.GetDatas().Result.FirstOrDefault(k=>k.Key=="Visa").Value" alt=""></a></li>
+                            <li><a href=""><img style="width: 64px;" src="~/assets/IMG/card-image/@layoutservice.GetDatas().Result.FirstOrDefault(k=>k.Key=="Mastercard").Value" alt=""></a></li>
+                            <li><a href=""><img style="width: 64px;" src="~/assets/IMG/card-image/@layoutservice.GetDatas().Result.FirstOrDefault(k=>k.Key=="Cashback").Value" alt=""></a></li>
+                            <li><a href=""><img style="width: 64px;" src="~/assets/IMG/card-image/@layoutservice.GetDatas().Result.FirstOrDefault(k=>k.Key=="Albali").Value" alt=""></a></li>
+                            <li><a href=""><img style="width: 64px;" src="~/assets/IMG/card-image/@layoutservice.GetDatas().Result.FirstOrDefault(k=>k.Key=="BolAil").Value" alt=""></a></li>
+                            <li><a href=""><img style="width: 64px;" src="~/assets/IMG/card-image/@layoutservice.GetDatas().Result.FirstOrDefault(k=>k.Key=="YapiKredi").Value" alt=""></a></li>
+                            <li><a href=""><img style="width: 64px;" src="~/assets/IMG/card-image/@layoutservice.GetDatas().Result.FirstOrDefault(k=>k.Key=="TamKart").Value" alt=""></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <hr>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="~/assets/js/owl.carousel.min.js"></script>
+    <script src="~/assets/js/style.js"></script>
+    <script>
+        $(document).on("click", ".add-basket", function () {
+        var id = $(this).attr("data-id");
+        fetch('http://localhost:50665/furniture/AddBasket/' + id)
+            .then(response => response.text())
+            .then(data => {
+                $(".basketmenu-product").html(data)
+            })
+    })
+     $(document).on("click", ".remove-basket", function (e) {
+        e.preventDefault();
+        var id = $(this).attr("data-id");
+        fetch('http://localhost:50665/furniture/RemoveBasket/' + id)
+            .then(response => response.text())
+            .then(data => {
+                $(".basketmenu-product").html(data)
+            })
+    })
+    
+     $(document).on("click", ".removeall-basket", function (e) {
+         e.preventDefault();
+        var id = $(this).attr("data-id");
+        fetch('http://localhost:50665/furniture/RemoveAllBasket/' + id)
+            .then(response => response.text())
+            .then(data => {
+                $(".basketmenu-product").html(data)
+            })
+    })
+    </script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+﻿@using Ehome_BackEnd.Models
+@model List<Color>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="table-responsive pt-3">
+     <a asp-controller="color" asp-action="create" style="color:white;font-size:20px" class="mb-3 btn btn-success">Create color object</a>
+
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                 <th>
+                    Settings
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Color color in Model)
+            {
+                if(!color.IsDeleted)
+                {
+                    <tr>
+                    <td>
+                        @color.Name
+                    </td>
+                    <td>
+                        <div class="d-flex">
+                            <div class="edit">
+                                <a asp-controller="color" asp-action="Edit" asp-route-id="@color.Id" class="btn btn-warning"><i class="fa-solid fa-pen-to-square" style="color:white;"></i>
+                                    <i class="mdi mdi-tooltip-edit"></i>
+                                </a>
+                            </div>
+                            <div class="delete">
+                                <a asp-controller="color" asp-action="Delete" asp-route-id="@color.Id" class="btn btn-danger"> <i class="fa-solid fa-trash"></i></a>
+                            </div>
+                        </div>
+                    </td>
+                    </tr>
+                }
+                else
+                {
+                    <tr style="color:red !important">
+                    <td>
+                        @color.Name
+                    </td>
+                    <td>
+                        <div class="d-flex">
+                            <div class="edit">
+                                <a asp-controller="color" asp-action="Edit" asp-route-id="@color.Id" class="btn btn-warning"><i class="fa-solid fa-pen-to-square" style="color:white;"></i>
+                                    <i class="mdi mdi-tooltip-edit"></i>
+                                </a>
+                            </div>
+                            <div class="delete">
+                                <a asp-controller="color" asp-action="Delete" asp-route-id="@color.Id" class="btn btn-danger"> <i class="fa-solid fa-trash"></i></a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+

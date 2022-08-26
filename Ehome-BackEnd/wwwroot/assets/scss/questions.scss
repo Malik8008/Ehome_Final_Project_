@@ -1,0 +1,36 @@
+#questions{
+    padding-bottom: 30px;
+    .head{
+        width: 100%;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        text-align: center;
+        p{
+        color: #40484e;
+        font-size: 24px;
+        font-weight: 500;
+        }
+    }
+    .question{
+        .accordion-item{
+            border: none;
+        }
+        .accordion-button:focus{
+            background-color: white;
+            background-color: #49bd68;
+            border: none;
+        }
+        .accordion-button{
+            background-color: white;
+            border: none;
+            h5{
+                color: black;
+            }
+        }
+        .accordion-body{
+            ul{
+                padding-left: 0px;
+            }
+        }
+    }
+}
