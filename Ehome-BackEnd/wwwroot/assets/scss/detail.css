@@ -47,7 +47,7 @@
 #detail .col-lg-9 .product-image .product-image-main .detailcarousel .item .product-image-icon {
   position: absolute;
   right: 6px;
-  top: 8px;
+  top: 0px;
   width: 35px;
   height: 35px;
   border-radius: 50px;

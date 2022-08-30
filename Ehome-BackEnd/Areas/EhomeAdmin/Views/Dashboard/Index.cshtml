@@ -62,7 +62,7 @@
                 </div>
                 <div class="col-lg-12 p-4 text-center" style="background-color:#49bd68;border-radius: 8px;">
 
-                    <div class="col-lg-6 mt-5">
+                    <div class="col-lg-12 mt-5">
                         <a asp-controller="account" asp-action="index">
                             <div class="box p-1">
                             <h5 class="counter" data-target="@Model.appUsers.Count"></h5>
@@ -79,10 +79,12 @@
                         </a>
                     </div>
                     <div class="col-lg-6 mt-5">
-                        <div class="box p-1">
+                        <a asp-controller="comment" asp-action="index">
+                            <div class="box p-1">
                             <h5 class="counter" data-target="@Model.Comments.Count"></h5>
                             <p> <i class="fa-solid fa-comment"></i> Comments</p>
                         </div>
+                        </a>
                     </div>
                 </div>
 
@@ -104,7 +106,7 @@
 
                 if (c < target) {
                     counter.innerText = `${Math.ceil(c + increment)}`;
-                    setTimeout(updateCounter, 1);
+                    setTimeout(updateCounter, 3);
                 } else {
                     counter.innerText = target;
                 }

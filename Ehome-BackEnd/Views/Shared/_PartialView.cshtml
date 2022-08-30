@@ -13,7 +13,7 @@
                         <a href=""><img style="width: 150px;" src="~/assets/IMG/furnitures/@item.Image" alt=""></a>
                     </div>
                     <div class="basket-info mt-2 ms-2">
-                        <p>@item.Count x @((@item.Count*@item.Price)) AZN</p>
+                        <p>@item.Count x @((@item.Count*@item.Price-(item.Price*item.Discount/100)).ToString("#")) AZN</p>
                         <div class="basket-count">
                            <a class="remove-basket" data-id="@item.ProductId"><i class="fa-solid fa-minus"></i></a> <input value="@item.Count" min="0" max="99"  style="width: 43px; font-size: 22px;" type="number"> <a class="add-basket"  data-id="@item.ProductId"><i  class="fa-solid fa-plus"></i></a>
                         </div>
@@ -31,10 +31,10 @@
                 @{decimal total = 0; }
                         @foreach (var item in Model)
                         {
-                            total += (item.Price * item.Count);
+                            total += (@item.Count*@item.Price-(item.Price*item.Discount/100) * item.Count);
                         }
                         <h6>
-                            <p>Cəmi: @total.ToString("0.00") AZN</p>
+                            <p>Cəmi: @total.ToString("0") AZN</p>
                         </h6>
                    
             </div>

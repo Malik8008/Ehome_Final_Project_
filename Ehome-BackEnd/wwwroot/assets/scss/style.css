@@ -2595,6 +2595,10 @@ footer .row .bankcard {
 #detail .col-lg-9 .product-image .product-image-main .detailcarousel .item .product-image-icon a {
   text-decoration: none;
 }
+
+#detail .col-lg-9 .product-image .product-image-main .detailcarousel .item .product-image-icon li {
+  list-style: none;
+}
 #detail .col-lg-9 .product-image .product-image-main .detailcarousel .item .product-image-icon a i {
   font-size: 20px;
   margin-top: 7px;
